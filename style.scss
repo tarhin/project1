@@ -1,0 +1,1473 @@
+@charset 'utf-8';
+
+:root {
+  font-size: calc(16vw / 14.4);
+}
+
+@function rem($pixel) {
+  @return $pixel / 16 * 1rem;
+}
+
+$gold_gradation: linear-gradient(to right, rgba(183, 143, 54, 80%), rgba(202, 171, 102, 80%) 45%, rgba(152, 127, 71, 80%));
+
+a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "cannia";
+  src: url(../font/Cannia.otf) format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Times New Roman";
+  src: url("../font/Times-New-Romance.ttf") format("truetype");
+  font-display: swap;
+}
+
+header {
+  box-shadow: 0 rem(4) rem(4) rgba(0, 0, 0, 0.03);
+
+  .header_information {
+    display: flex;
+    background: $gold_gradation;
+    color: white;
+    font-family: "Zen Old Mincho",serif;
+    font-size: rem(12);
+    padding: rem(8) 0;
+    box-sizing: border-box;
+
+    .img_phone {
+      display: block;
+      width: rem(10);
+      height: rem(10);
+    }
+
+    .header_information_phone {
+      display: flex;
+      align-items: center;
+      margin-left: rem(20);
+
+      p {
+        margin-left: rem(8);
+      }
+    }
+
+    > p {
+      margin-left: rem(20);
+    }
+  }
+
+  .header_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: rem(120);
+    padding: 0 rem(38);
+
+    .header_logo {
+      display: flex;
+
+      img {
+        width: rem(54);
+        height: rem(64);
+        display: block;
+        margin-right: rem(8);
+      }
+
+      h1 {
+        width: fit-content;
+        line-height: 1.6;
+        font-family: "Noto Serif JP", "游明朝体", "Yu Mincho", "YuMincho", serif;
+        font-size: rem(20);
+        font-weight: 800;
+        background: $gold_gradation;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        vertical-align: middle;
+        text-shadow: 0 rem(2) rem(4) rgba(0, 0, 0, .1);
+        letter-spacing: rem(1);
+      }
+    }
+
+    .header_content_menu {
+
+      .header_menu_link {
+        display: flex;
+        justify-content: flex-end;
+        font-family: "Noto Serif JP", "游明朝体", "Yu Mincho", "YuMincho", serif;
+        font-weight: 800;
+        font-size: rem(14);
+
+        img {
+          display: block;
+          width: rem(20);
+          height: rem(20);
+          margin-right: rem(10);
+        }
+
+        > a {
+          display: flex;
+          align-items: center;
+          padding: rem(8) rem(16);
+        }
+
+        .line_link {
+          color: rgba(6, 199, 85, 1);
+          border: rgba(6, 199, 85, 1) rem(1) solid;
+          border-radius: rem(5);
+          margin-right: rem(16);
+        }
+
+        .contact_link {
+          color: rgba(249, 137, 121);
+          border: rgba(249, 137, 121) rem(1) solid;
+          border-radius: rem(5);
+        }
+      }
+
+      ul {
+        display: flex;
+        margin-top: rem(10);
+        list-style: none;
+        color: rgba(102, 102, 102, 1);
+        font-family: "Noto Serif JP", "游明朝体", "Yu Mincho", "YuMincho", serif;
+        font-size: rem(16);
+        font-weight: 800;
+
+        li:not(:last-child){
+          margin-right: rem(24);
+        }
+      }
+    }
+  }
+}
+
+main {
+
+  .slide_image_top_wrapper {
+    overflow: hidden;
+  }
+
+  .slide_image_top {
+    height: rem(420);
+    margin: rem(18) 0 rem(40) 0;
+
+    .slick-list.draggable {
+      height: 100%;
+    }
+
+    .slick-track {
+      height: 100%;
+    }
+
+    * {
+      overflow: visible;
+    }
+
+    .slide_content {
+      width: rem(580);
+      height: rem(320);
+      margin-left: rem(140);
+    }
+
+    img.slick {
+      display: block;
+      width: rem(580);
+      height: rem(320);
+      background-color: rgba(217, 217, 217, 1);
+      border: none;
+      transform-origin: center center;
+      will-change: width,height;
+      transition-duration: 300ms;
+      margin: rem(50) 0;
+    }
+
+    .slide_content.slick-center {
+
+      img {
+        transform: scale(1.34);
+        transform-origin: center;
+      }
+    }
+  }
+
+  .main_recommend_menu {
+    background-color: rgba(255, 249, 245, 1);
+    padding: rem(80) 0;
+
+    h2 {
+      width: fit-content;
+      padding-left: rem(220);
+      font-size: rem(64);
+      font-family: "cannia";
+      font-weight: 400;
+      background: linear-gradient(to right, rgba(183, 143, 54, .8), rgba(202, 171, 102, .8), rgba(102, 83, 40, .8));
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .recommend_slide {
+      width: rem(822);
+      // margin-top: rem(80);
+      margin: rem(80) auto 0;
+    }
+
+    .recommend_slide_image {
+
+      a {
+        width: fit-content;
+        margin-right: rem(36);
+      }
+
+      img {
+        width: rem(250);
+        height: rem(250); 
+      }
+    }
+  }
+
+  .recommend_prev,
+  .recommend_next,
+  .gallery_prev,
+  .gallery_next {
+    width: rem(40);
+    height: rem(40);
+    position: absolute;
+    top: rem(-132);
+    background-color: white;
+    border: rem(1) rgba(192, 157, 123, 1) solid;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .recommend_prev {
+    right: rem(-33);
+
+    &::before {
+      content: "";
+      display: block;
+      width: rem(9);
+      height: rem(1);
+      position: absolute;
+      top: rem(19);
+      left: rem(15);
+      background-color: rgba(192, 157, 123, 1);
+      transform: rotate(40deg);
+      transform-origin: left;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: rem(9);
+      height: rem(1);
+      position: absolute;
+      top: rem(19);
+      left: rem(15);
+      background-color: rgba(192, 157, 123, 1);
+      transform: rotate(-40deg);
+      transform-origin: left;
+    }
+  }
+
+    
+    .gallery_prev {
+      right: rem(276);
+
+      &::before {
+        content: "";
+        display: block;
+        width: rem(9);
+        height: rem(1);
+        position: absolute;
+        top: rem(19);
+        left: rem(15);
+        background-color: rgba(192, 157, 123, 1);
+        transform: rotate(40deg);
+        transform-origin: left;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        width: rem(9);
+        height: rem(1);
+        position: absolute;
+        top: rem(19);
+        left: rem(15);
+        background-color: rgba(192, 157, 123, 1);
+        transform: rotate(-40deg);
+        transform-origin: left;
+      }
+    }
+
+    .recommend_next,
+    .gallery_next {
+      right: rem(220);
+
+      &::before {
+        content: "";
+        display: block;
+        width: rem(9);
+        height: rem(1);
+        position: absolute;
+        top: rem(19);
+        right: rem(15);
+        background-color: rgba(192, 157, 123, 1);
+        transform: rotate(40deg);
+        transform-origin: right;
+      }
+
+      &::after {
+        content: "";
+        display: block;
+        width: rem(9);
+        height: rem(1);
+        position: absolute;
+        top: rem(19);
+        left: rem(15);
+        background-color: rgba(192, 157, 123, 1);
+        transform: rotate(-40deg);
+        transform-origin: right;
+      }
+    }
+
+    .recommend_next {
+      right: rem(-89);
+    }
+
+  .main_features {
+    position: relative;
+    background: url("../img/feature_bg.png") center / cover no-repeat;
+    padding: rem(80) 0;
+
+    .feature_content {
+      display: flex;
+      justify-content: space-between;
+      width: rem(1000);
+      margin: rem(64) auto 0;
+      
+      img {
+        width: rem(420);
+        height: rem(264);
+        border: none;
+        border-radius: rem(20);
+      }
+
+      img:nth-of-type(2) {
+        position: absolute;
+      }
+
+      .feature_content_text {
+        width: rem(472);
+      }
+
+      h4 {
+        font-size: rem(18);
+        font-weight: 600;
+        font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+        color: rgba(173, 127, 82, 1);
+        line-height: 1.6;
+      }
+
+      p {
+        margin-top: rem(24);
+        font-size: rem(16);
+        font-weight: 500;
+        font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+        color: rgba(102, 102, 102, 1);
+        line-height: 1.6;
+      }
+    }
+
+    .feature_content:not(:nth-of-type(3)) {
+      flex-direction: row-reverse;
+    }
+
+    .feature_content:nth-of-type(3) {
+      flex-direction: row;
+
+      img:nth-of-type(2) {
+        width: rem(155);
+        height: auto;
+        top: rem(515);
+        left: rem(126);
+      }
+    }
+
+    .feature_content:nth-of-type(2),
+    .feature_content:nth-of-type(4) {
+      img:nth-of-type(2) {
+        width: rem(208);
+        height: auto;
+      }
+    }
+
+    .feature_content:nth-of-type(2) {
+      img:nth-of-type(2) {
+        top: rem(210);
+        right: rem(114);
+      }
+    }
+
+    .feature_content:nth-of-type(4) {
+      img:nth-of-type(2) {
+        top: rem(810);
+        right: rem(100);
+      }
+    }
+
+  }
+
+  .main_features,
+  .main_concept,
+  .main_doctor {
+
+    h2 {
+      width: fit-content;
+      font-size: rem(64);
+      font-weight: 200;
+      font-family: "cannia";
+      background: $gold_gradation;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: calc(rem(64) * .16);
+      margin: 0 auto;
+    }
+
+    h3 {
+      width: fit-content;
+      font-size: rem(24);
+      font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+      font-weight: 400;
+      background: $gold_gradation;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: rem(16) auto 0;
+      letter-spacing: calc(rem(24) * .16);
+    }
+
+    .features_bar {
+      width: rem(80);
+      height: rem(1);
+      background: $gold_gradation;
+      margin: rem(16) auto 0 auto;
+    }
+  }
+
+  .main_concept {
+    width: rem(1220);
+    height: rem(686);
+    margin: rem(80) 0 rem(80) auto;
+    position: relative;
+
+    .concept_bg_img {
+      position: absolute;
+      background: url("../img/concept_bg.png") center / cover no-repeat;
+      width: rem(1220);
+      height: rem(686);
+      border-radius: rem(160) 0 0 0;
+      z-index: 0;
+    }
+
+    .concept_bg_color {
+      position: absolute;
+      width: rem(1220);
+      height: rem(686);
+      background-color: rgba(247, 247, 247, 1);
+      border-radius: rem(160) 0 0 0;
+      z-index: -1;
+    }
+
+    h2 {
+      font-weight: 300;
+    }
+
+    img:nth-of-type(1) {
+      position: absolute;
+      top: rem(27);
+      right: rem(129);
+      width: rem(250);
+    }
+
+    img:nth-of-type(2) {
+      position: absolute;
+      top: rem(84);
+      right: rem(240);
+      width: rem(117);
+      transform: rotate(-91.19deg);
+    }
+
+    .concept_header{
+      width: rem(304);
+      padding: rem(80) 0 0 rem(80);
+    }
+
+    .concept_text {
+      margin: rem(64) 0 0 rem(80);
+
+      h3 {
+        margin: 0;
+        font-size: rem(32);
+        font-weight: 600;
+        color: rgba(173, 127, 82, 1);
+        margin-bottom: rem(24);
+        background: transparent;
+        background-clip: text;
+        -webkit-text-fill-color: rgba(173, 127, 82, 1);
+        letter-spacing: 0;
+      }
+
+      p {
+        width: rem(920);
+        font-size: rem(16);
+        font-weight: 500;
+        font-family: "Noto Serif JP", "Yu Mincho", "游明朝", serif;
+        color: rgba(102, 102, 102, 1);
+        margin: 0 0 rem(24) 0;
+      }
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: rem(420);
+        height: rem(64);
+        position: relative;
+        border: rem(1) solid rgba(173, 127, 82, 1);
+        font-size: rem(16);
+        font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+        font-weight: 500;
+        letter-spacing: calc(rem(16) * .16);
+        color: rgba(102, 102, 102, 1);
+  
+        img {
+          position: static;
+          width: rem(26);
+          transform: none;
+          margin: 0 0 0 rem(10);
+        }
+      }  
+    }
+
+  }
+
+  .main_doctor {
+    font-family: "Noto Serif JP", "Yu Mincho", serif;
+
+    padding: rem(80) 0;
+    background: url("../img/doctor_bg.png") center / cover no-repeat;
+
+    .doctor_content {
+      width: rem(1000);
+      margin: rem(64) auto 0;
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        width: rem(423);
+        flex-shrink: 0;
+      }
+
+      .doctor_content_text {
+        h3 {
+          margin: 0;
+          color: rgba(173, 127, 82, 1);
+          font-size: rem(24);
+          font-weight: 500;
+          line-height: 1.7;
+          letter-spacing: rem(.32);
+          background: transparent;
+          background-clip: text;
+          -webkit-text-fill-color: rgba(173, 127, 82, 1);
+        }
+
+        p {
+          font-size: rem(36);
+          font-weight: 600;
+          color: rgba(102, 102, 102, 1);
+          line-height: 1.6;
+        }
+
+        h4 {
+          width: fit-content;
+          font-size: rem(18);
+          font-weight: 600;
+          letter-spacing: calc(rem(18) * .05);
+          line-height: 2;
+          color: rgba(173, 127, 82, 1);
+          margin: rem(20) 0 0 0;
+        }
+
+        ul {
+          width: fit-content;
+          color: rgba(102, 102, 102, 1);
+
+          li {
+            width: fit-content;
+            margin: 0 0 0 rem(25);
+            line-height: 1.5;
+          }
+        }
+
+        p {
+          width: rem(500);
+          font-size: rem(16);
+          font-weight: 500;
+          color: rgba(102, 102, 102, 1);
+          margin: rem(20) 0 0 0;
+          letter-spacing: calc(rem(16) * .05);
+          line-height: 1.7;
+        }
+
+        .doctor_link_media {
+          display: flex;
+          align-items: center;
+          margin: rem(20) 0 0 0;
+
+          a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: rem(173);
+            height: rem(36);
+            border: rem(2) solid rgba(173, 127, 82, 1);
+            color: rgba(68, 68, 68, 1);
+            font-size: rem(14);
+            letter-spacing: calc(rem(14) * .04);
+            line-height: 1.6;
+            font-weight: 400;
+            padding: 0 rem(20);
+            border-radius: rem(5);
+            margin-right: rem(24);
+
+            img {
+              width: rem(26);
+            }
+          }
+        }
+
+        > a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: rem(420);
+          height: rem(64);
+          margin: rem(16) 0 0 0;
+          background-color: rgba(192, 157, 123, 1);
+          border: rem(1) rgba(173, 127, 82, 1) solid;
+          color: white;
+
+          img {
+            width: rem(26);
+            margin: 0 0 0 rem(10);
+          }
+        }
+      }
+    }
+  }
+
+  .main_menu,
+  .main_case,
+  .main_gallery,
+  .main_access,
+  .main_calendar,
+  .main_price {
+    h2 {
+      width: fit-content;
+      font-size: rem(64);
+      font-weight: 200;
+      font-family: "cannia";
+      background: $gold_gradation;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: calc(rem(64) * .16);
+      margin: 0 auto;
+    }
+
+    > h3 {
+      width: fit-content;
+      font-size: rem(24);
+      font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+      font-weight: 400;
+      background: $gold_gradation;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: rem(16) auto 0;
+      letter-spacing: calc(rem(24) * .16);
+    }
+
+    .features_bar {
+      width: rem(80);
+      height: rem(1);
+      background: $gold_gradation;
+      margin: rem(16) auto 0 auto;
+    }
+  }
+
+  .main_menu {
+    font-family: "Noto Serif JP", "Yu Mincho", serif;
+    padding: rem(80) 0;
+    background: url("../img/main_menu_bg.png") center / cover no-repeat;
+
+    .menu_content {
+      h3 {
+        width: fit-content;
+        font-size: rem(64);
+        font-weight: 400;
+        font-family: "cannia";
+        text-shadow: 0 rem(3) rem(3) rgba(0, 0, 0, .1);
+        background: linear-gradient(#987F47, #C09D4E 27%, #CAAB66 55%, #987F47);
+        background-clip: text;
+        color: rgba(102, 102, 102, 1);
+        -webkit-text-fill-color: transparent;
+        letter-spacing: calc(rem(64 * .16));
+      }
+
+      a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-shrink: 0;
+        width: rem(200);
+        height: rem(60);
+        color: rgba(175, 148, 84, 1);
+        border: rem(1) solid rgba(175, 148, 84, 1);
+        border-radius: rem(40);
+        font-size: rem(16);
+        letter-spacing: calc(rem(16) * .01);
+        padding: 0 rem(16);
+
+        &::after {
+          content: "";
+          width: rem(10);
+          height: rem(5);
+          border-top: rem(5) transparent solid;
+          border-bottom: rem(5) transparent solid;
+          border-left: rem(5) solid rgba(175, 148, 84, 1);
+        }
+      }
+
+      .menu_link_wrapper {
+        margin-top: rem(24);
+      }
+    }
+
+    .menu_content:nth-of-type(2),
+    .menu_content:nth-of-type(4) {
+      margin: 0 0 0 auto;
+      width: rem(1220);
+      height: rem(560);
+      padding: rem(80) 0 0 rem(40);
+    }
+
+    .menu_content:nth-of-type(3) {
+      margin: 0 auto 0 0;
+      width: rem(1220);
+      height: rem(560);
+    }
+
+    .menu_content:nth-of-type(2) {
+      background: url("../img/main_menu_image1.jpg") center / cover no-repeat;
+      margin-top: rem(48);
+
+      .menu_link_wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(16) rem(21);
+        width: rem(474);
+      }
+    }
+
+    .menu_content:nth-of-type(3) {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      background: url("../img/main_menu_image2.jpg") center / cover no-repeat;
+      margin-top: rem(64);
+      padding: rem(80) rem(40) 0 0;
+    }
+
+    .menu_content:nth-of-type(4) {
+      background: url("../img/main_menu_image3.jpg") center / cover no-repeat;
+      margin-top: rem(64);
+    }
+  }
+
+  .main_case {
+    background: url("../img/case_bg.jpg") center / cover no-repeat;
+    font-family: "Noto Serif JP", "Yu Mincho", serif;
+    padding: rem(64) 0 rem(80);
+
+    .case_content_wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: rem(1000);
+      margin: rem(50) auto 0;
+
+      .case_content {
+        width: rem(240);
+        padding: rem(30) rem(20) 0 rem(20);
+        background-color: rgba(247, 247, 247, 1);
+        box-sizing: border-box;
+
+        .case_content_img {
+          width: rem(200);
+          height: rem(224);
+          border: rem(1) rgba(163, 129, 9, 1) solid;
+        }
+
+        .case_content_text:nth-of-type(2) {
+          height: rem(45);
+          margin: rem(10) 0 rem(10) 0;
+        }
+
+        .case_content_text:nth-of-type(3) {
+          height: rem(45);
+          margin: 0 0 rem(10) 0;
+        }
+
+        .case_content_text:nth-of-type(4) {
+          height: rem(51);
+          margin: 0 0 rem(10) 0;
+        }
+
+        .case_content_text:nth-of-type(5) {
+          height: rem(34);
+          margin: 0 0 rem(30) 0;
+        }
+
+        h4 {
+          font-size: rem(12);
+          font-weight: 500;
+          color: rgba(175, 175, 175, 1);
+          letter-spacing: calc(rem(12) * .05);
+        }
+
+        p {
+          font-size: rem(14);
+          font-weight: 500;
+          color: rgba(77, 77, 77, 1);
+          letter-spacing: calc(rem(14) * 0.05);
+        }
+      }
+    }
+  }
+
+  .main_news {
+    padding: rem(80) 0;
+
+    .news_content {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      width: rem(1303);
+      height: rem(440);
+      background: url("../img/news_bg.jpg") center / cover no-repeat;
+      margin: 0 0 0 auto;
+      padding: rem(80) rem(222) 0 rem(128);
+      border-radius: rem(160) 0 0 rem(160);
+      font-family: "Noto Serif JP", "Yu Mincho", serif;
+
+      .news_content_header {
+        width: rem(167);
+        box-sizing: border-box;
+
+        h2 {
+          width: fit-content;
+          font-family: "cannia";
+          font-weight: 300;
+          font-size: rem(64);
+          letter-spacing: calc(rem(64) * .16);
+          background: $gold_gradation;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        h3 {
+          width: fit-content;
+          font-size: rem(24);
+          font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+          font-weight: 400;
+          background: $gold_gradation;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin: rem(16) auto 0;
+          letter-spacing: calc(rem(24) * .16);
+        }
+    
+        .features_bar {
+          width: rem(80);
+          height: rem(1);
+          background: $gold_gradation;
+          margin: rem(16) auto 0 auto;
+        }
+      }
+
+      .news_content_text_wrapper {
+        > a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: rem(380);
+          height: rem(64);
+          margin: rem(40) auto 0;
+          background-color: rgba(192, 157, 123, 1);
+          border: rem(1) rgba(173, 127, 82, 1) solid;
+          color: white;
+
+          img {
+            margin: 0 0 0 rem(10);
+          }
+        }
+
+        .news_content_text {
+          display: flex;
+          justify-content: space-between;
+          width: rem(511);
+          margin-bottom: rem(24);
+          font-size: rem(16);
+          color: rgba(51, 51, 51, 1);
+          line-height: 1.6;
+
+          h4 {
+            font-family: "cannia";
+            font-weight: 200;
+            color: rgba(102, 102, 102, 1);
+          }
+        }
+      }
+
+      > img {
+        position: absolute;
+      }
+
+      > img:nth-of-type(1) {
+        bottom: rem(37.69);
+        left: rem(72);
+        width: rem(140);
+        height: rem(163);
+      }
+
+      > img:nth-of-type(2) {
+        bottom: rem(25);
+        left: rem(157);
+        width: rem(80);
+        height: rem(80);
+      }
+    }
+  }
+
+  .main_gallery {
+    padding: rem(80) 0;
+    background-color: rgba(255, 249, 245, 1);
+
+    .gallery_slide {
+      margin: rem(64) 0 rem(80);
+      position: relative;
+    }
+
+    .gallery_slide_content {
+      img {
+        width: rem(580);
+        height: rem(460);
+        margin-left: rem(40);
+      }
+    }
+
+    .slick-dots {
+      bottom: rem(-40);
+      height: rem(15);
+
+      li {
+        width: rem(25);
+        margin: 0;
+
+        button {
+          padding: 0;
+          width: rem(25);
+
+          &::before {
+            font-size: rem(10);
+          }
+        }
+      }
+
+      li.slick-active,
+      li:hover {
+        button {
+          &::before {
+            font-size: rem(15);
+            color: rgba(175, 148, 84, 1);
+          }
+        }
+      }
+    }
+
+    .gallery_prev,
+    .gallery_next {
+      top: auto;
+      bottom: rem(-60);
+    }
+
+    .gallery_prev {
+      left: rem(542.5);
+    }
+
+    .gallery_next {
+      right: rem(542.5);
+    }
+  }
+
+  .main_access {
+    position: relative;
+    padding: rem(80) 0;
+    font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+
+    .main_access_bg {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: rem(650);
+      background: url("../img/access_bg.jpg") center / cover no-repeat;
+      opacity: 40%;
+      z-index: -1;
+    }
+
+    .access_content_wrapper {
+      display: flex;
+      align-items: center;
+      column-gap: rem(53);
+      width: rem(1000);
+      margin: rem(64) auto 0;
+
+      .access_content {
+        width: rem(550);
+      }
+
+      h3 {
+        font-size: rem(20);
+        font-weight: 800;
+        line-height: 1.6;
+        color: rgba(173, 127, 82, 1);
+      }
+
+      .access_border {
+        width: rem(550);
+        height: rem(.05);
+        border: rem(1) solid rgba(239, 218, 198, 1);
+        margin: rem(16) 0;
+      }
+
+      .access_text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h4,p{
+          font-weight: 700;
+          font-size: rem(16);
+          letter-spacing: calc(rem(16) * .08);
+          line-height: 1.6;
+        }
+
+        h4 {
+          font-family: "Zen Old Mincho", "Noto Serif JP", "Yu Mincho" serif;
+          color: rgba(173, 127, 82, 1);
+        }
+
+        p {
+          width: rem(443);
+          font-family: "Noto Serif JP", "Yu Mincho", serif;
+          color: rgba(102, 102, 102, 1);
+        }
+      }
+    }
+  }
+
+  .main_calendar {
+    padding: rem(80) 0;
+
+    .calendar_content_wrapper {
+      display: flex;
+      justify-content: center;
+      column-gap: rem(40);
+      margin: rem(48) 0 0;
+
+      h3 {
+        font-family: "Noto Serif JP", "Yu Mincho", serif;
+        font-size: rem(24);
+        font-weight: 800;
+        letter-spacing: calc(rem(24) * .04);
+        line-height: 1.6;
+        text-align: center;
+        color: rgba(173, 127, 82, 1)
+      }
+
+      .calendar-wrap {
+        margin: rem(30) 0 0 0;
+        width: rem(546);
+      }
+
+      .calendar {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: rem(14);
+        font-family: "Zen Kaku Gothic New", sans-serif;
+        font-weight: 700;
+        line-height: 1.6;
+        letter-spacing: calc(rem(14) * .04);
+        color: rgba(102, 102, 102, 1);
+
+        td {
+          height: rem(85);
+          border: rem(1) solid rgba(204, 204, 204, 1);
+          text-align: center;
+        }
+
+        td > div:nth-of-type(1) {
+          height: rem(22);
+          background-color: rgba(255, 249, 245, 1);
+          border-bottom: rem(1) solid rgba(204, 204, 204, 1);
+        }
+
+        td > div:nth-of-type(2) {
+          height: rem(63);
+        }
+      }
+
+      .calendar .sun {
+        color: rgba(165, 42, 42, 1);
+      }
+      .calendar .sat {
+        color: rgba(100, 149, 237, 1);
+      }
+      .calendar th.sat {
+        color: rgba(0, 0, 255, 1);
+      }
+    }
+  }
+
+  .main_booking {
+    background-color: rgba(247, 247, 247, 1);
+    font-family: "Noto Serif JP", "Yu Mincho", serif;
+    padding: rem(80) 0;
+    line-height: 1.6;
+
+
+    .booking_content {
+      width: rem(1000);
+      height: rem(393);
+      text-align: center;
+      background: url("../img/booking_bg.png") center / cover no-repeat;
+      margin: 0 auto;
+      padding: rem(64) 0;
+
+      h2,h3 {
+        width: fit-content;
+        font-weight: 600;
+        color: rgba(173, 127, 82, 1);
+        margin: 0 auto;
+      }
+
+      h3 {
+        font-size: rem(32);
+      }
+
+      h2 {
+        font-size: rem(80);
+      }
+
+      .booking_content_link {
+        display: flex;
+        column-gap: rem(8);
+        justify-content: center;
+        color: white;
+        font-size: rem(24);
+        font-weight: 700;
+        font-family: "Zen Old Mincho", "Noto Serif JP", "Yu Mincho", serif;
+        letter-spacing: calc(rem(24) * .04);
+        
+        a {
+          display: flex;
+          align-items: center;
+          column-gap: rem(10);
+          border-radius: rem(5);
+          padding: rem(8) rem(16);
+
+          img {
+            width: rem(32);
+          }
+        }
+
+        a:nth-of-type(1) {
+          background-color: rgba(6, 199, 85, 1);
+          border: rem(1) rgba(6, 199, 85, 1) solid;
+        }
+
+        a:nth-of-type(2) {
+          background-color: rgba(249, 137, 121, 1);
+          border: rem(1) rgba(249, 137, 121, 1) solid;
+        }
+
+        a:nth-of-type(3) {
+          background-color: rgba(251, 199, 51, 1);
+          border: rem(1) rgba(251, 199, 51, 1) solid;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  
+  width: 100%;
+  height: rem(868);
+  color: white;
+  background-color: rgba(102, 102, 102, 1);
+  padding: rem(80) 0 0 0;
+
+  .footer_content_wrapper {
+    display: flex;
+  }
+
+  .footer_content_about_wrapper {
+    margin: 0 0 0 rem(220);
+
+    > img {
+      width: rem(160);
+    }
+
+    .footer_link {
+      display: flex;
+      column-gap: rem(10);
+      margin: rem(40) 0 0 0;
+      font-family: "Zen Old Mincho", "Noto Serif JP", "Yu Mincho", serif;
+      font-weight: 700;
+      font-size: rem(14);
+      letter-spacing: calc(rem(24) * .04);
+      line-height: 1.6;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: rem(5);
+        border: white rem(1) solid;
+        border-radius: rem(5);
+        padding: rem(8);
+        box-sizing: border-box;
+
+        img {
+          width: rem(20);
+        }
+      }
+    }
+
+    .footer_content_about {
+      width: fit-content;
+      margin: rem(24) 0 0 0;
+
+      .footer_about_text {
+        display: flex;
+        width: rem(550);
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 rem(16) 0;
+
+        h4,p{
+          font-family: "Yu Mincho", "Noto Serif JP", serif;
+          font-weight: 200;
+          font-size: rem(16);
+          line-height: 1.6;
+        }
+
+        h4 {
+          letter-spacing: calc(rem(16) * .08);
+        }
+        p {
+          width: rem(427);
+        }
+      }
+    }
+  }
+
+  .footer_article_wrapper {
+    margin: rem(17) 0 0 rem(90);
+
+    .footer_content_article {
+      h3 {
+        font-family: "Times New Roman", "cannia", serif;
+        font-size: rem(36);
+        font-weight: 400;
+        letter-spacing: calc(rem(36) * .1);
+      }
+
+      .footer_article {
+        display: flex;
+        width: rem(280);
+        margin: rem(16) 0 0 0;
+        column-gap: rem(24);
+
+        div {
+          display: flex;
+          flex-shrink: 0;
+          flex-direction: column;
+          row-gap: rem(8);
+        }
+
+        > div:nth-of-type(1) {
+          width: rem(144);
+        }
+      }
+
+      a {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        font-family: "Yu Mincho", "Noto Serif JP", serif;
+        font-size: rem(16);
+        font-weight: 500;
+        line-height: 1.6;
+
+        > div {
+          width: rem(16);
+          height: rem(.05);
+          border: rem(6) solid;
+          border-color: transparent transparent transparent white;
+        }
+      }
+    }
+
+    .footer_content_article:nth-of-type(2) {
+      margin: rem(74) 0 0 0;
+
+      .footer_article {
+        width: rem(344);
+        justify-content: space-between;
+
+        > div:nth-of-type(1) {
+          width: rem(208);
+        }
+      }
+    }
+  }
+
+  .footer_content_copyright {
+    width: 100%;
+    height: fit-content;
+    font-family: "Yu Mincho", "Noto Serif JP", serif;
+    font-weight: 200;
+    font-size: rem(16);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: rem(100) 0 0 0;
+  }
+}
+
+
+
+// Priceページ
+
+.main_price {
+  margin: rem(54) 0 0 0;
+
+  .price_header_wrapper {
+    margin: rem(74) 0 0 0;
+    padding: rem(80) 0;
+    background: url('../img/feature_bg.png') center / cover no-repeat;
+  }
+
+  .price_header_content {
+    width: rem(1000);
+    margin: 0 auto;
+    font-family: "Noto Serif JP", "Yu Mincho", serif;
+    letter-spacing: calc(rem(32) * .04);
+    text-align: center;
+
+    h3 {
+      font-size: rem(32);
+      font-weight: 600;
+      background: $gold_gradation;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h4 {
+      margin: rem(24) 0 0 0;
+      font-size: rem(16);
+      font-weight: 500;
+      color: rgba(102, 102, 102, 1);
+      line-height: 1.6;
+    }
+
+    .price_link {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(16) rem(13);
+      font-family: "Noto Serif JP", "Yu Mincho", serif;
+      font-size: rem(15);
+      color: rgba(192, 157, 123, 1);
+      letter-spacing: calc(rem(15) * .04);
+      margin: rem(40) 0 0 0;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: rem(240);
+        height: rem(48);
+        border: rem(1) solid rgba(192, 157, 123, 1);
+        border-radius: rem(4);
+        background-color: white;
+        position: relative;
+        padding: 0 0 0 rem(40);
+
+        div {
+          width: rem(14);
+          height: rem(.05);
+          border: rem(1) solid rgba(192, 157, 123, 1);
+          position: absolute;
+          left: rem(194);
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto 0;
+            display: block;
+            width: rem(7);
+            height: rem(1.5);
+            transform-origin: right;
+            transform: rotate(45deg);
+            background-color: rgba(192, 157, 123, 1);
+          }
+
+          &::after {
+            position: absolute;
+            content: "";
+            top: 0;
+            bottom: 0;
+            margin: auto 0;
+            right: 0;
+            display: block;
+            width: rem(7);
+            height: rem(1.5);
+            transform-origin: right;
+            transform: rotate(-45deg);
+            background-color: rgba(192, 157, 123, 1);
+          }
+        }
+      }
+    }
+  }
+}
