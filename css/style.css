@@ -7,11 +7,12 @@ a {
   display: block;
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 @font-face {
   font-family: "cannia";
-  src: url(../font/Cannia.otf) format("opentype");
+  src: url("../font/Cannia.otf") format("opentype");
   font-display: swap;
 }
 @font-face {
@@ -57,6 +58,7 @@ header .header_content {
 }
 header .header_content .header_logo {
   display: flex;
+  align-items: center;
 }
 header .header_content .header_logo img {
   width: 3.375rem;
@@ -76,9 +78,7 @@ header .header_content .header_logo h1 {
   -webkit-background-clip: text;
           background-clip: text;
   -webkit-text-fill-color: transparent;
-  vertical-align: middle;
   text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-  letter-spacing: 0.0625rem;
 }
 header .header_content .header_content_menu .header_menu_link {
   display: flex;
@@ -192,7 +192,9 @@ main .main_recommend_menu .recommend_slide_image img {
 main .recommend_prev,
 main .recommend_next,
 main .gallery_prev,
-main .gallery_next {
+main .gallery_next,
+main .about_case_pagenation .prev,
+main .about_case_pagenation .next {
   width: 2.5rem;
   height: 2.5rem;
   position: absolute;
@@ -229,10 +231,12 @@ main .recommend_prev::after {
   transform: rotate(-40deg);
   transform-origin: left;
 }
-main .gallery_prev {
+main .gallery_prev,
+main .about_case_pagenation .prev {
   right: 17.25rem;
 }
-main .gallery_prev::before {
+main .gallery_prev::before,
+main .about_case_pagenation .prev::before {
   content: "";
   display: block;
   width: 0.5625rem;
@@ -244,7 +248,8 @@ main .gallery_prev::before {
   transform: rotate(40deg);
   transform-origin: left;
 }
-main .gallery_prev::after {
+main .gallery_prev::after,
+main .about_case_pagenation .prev::after {
   content: "";
   display: block;
   width: 0.5625rem;
@@ -255,36 +260,38 @@ main .gallery_prev::after {
   background-color: rgb(192, 157, 123);
   transform: rotate(-40deg);
   transform-origin: left;
+}
+main .recommend_next::before,
+main .gallery_next::before,
+main .about_case_pagenation .next::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0.5625rem;
+  height: 0.0625rem;
+  background-color: rgb(192, 157, 123);
+  transform: rotate(40deg);
+  transform-origin: right;
+  top: 1.1875rem;
+  right: 0.9375rem;
+}
+main .recommend_next::after,
+main .gallery_next::after,
+main .about_case_pagenation .next::after {
+  content: "";
+  display: block;
+  width: 0.5625rem;
+  height: 0.0625rem;
+  position: absolute;
+  top: 1.1875rem;
+  left: 0.9375rem;
+  background-color: rgb(192, 157, 123);
+  transform: rotate(-40deg);
+  transform-origin: right;
 }
 main .recommend_next,
 main .gallery_next {
   right: 13.75rem;
-}
-main .recommend_next::before,
-main .gallery_next::before {
-  content: "";
-  display: block;
-  width: 0.5625rem;
-  height: 0.0625rem;
-  position: absolute;
-  top: 1.1875rem;
-  right: 0.9375rem;
-  background-color: rgb(192, 157, 123);
-  transform: rotate(40deg);
-  transform-origin: right;
-}
-main .recommend_next::after,
-main .gallery_next::after {
-  content: "";
-  display: block;
-  width: 0.5625rem;
-  height: 0.0625rem;
-  position: absolute;
-  top: 1.1875rem;
-  left: 0.9375rem;
-  background-color: rgb(192, 157, 123);
-  transform: rotate(-40deg);
-  transform-origin: right;
 }
 main .recommend_next {
   right: -5.5625rem;
@@ -354,7 +361,7 @@ main .main_features .feature_content:nth-of-type(4) img:nth-of-type(2) {
 }
 main .main_features h2,
 main .main_concept h2,
-main .main_doctor h2 {
+main .main_doctor_top h2 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -370,7 +377,7 @@ main .main_doctor h2 {
 }
 main .main_features h3,
 main .main_concept h3,
-main .main_doctor h3 {
+main .main_doctor_top h3 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -386,7 +393,7 @@ main .main_doctor h3 {
 }
 main .main_features .features_bar,
 main .main_concept .features_bar,
-main .main_doctor .features_bar {
+main .main_doctor_top .features_bar {
   width: 5rem;
   height: 0.0625rem;
   background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
@@ -477,22 +484,22 @@ main .main_concept .concept_text a img {
   transform: none;
   margin: 0 0 0 0.625rem;
 }
-main .main_doctor {
+main .main_doctor_top {
   font-family: "Noto Serif JP", "Yu Mincho", serif;
   padding: 5rem 0;
   background: url("../img/doctor_bg.png") center/cover no-repeat;
 }
-main .main_doctor .doctor_content {
+main .main_doctor_top .doctor_top_content {
   width: 62.5rem;
   margin: 4rem auto 0;
   display: flex;
   justify-content: space-between;
 }
-main .main_doctor .doctor_content img {
+main .main_doctor_top .doctor_top_content img {
   width: 26.4375rem;
   flex-shrink: 0;
 }
-main .main_doctor .doctor_content .doctor_content_text h3 {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text h3 {
   margin: 0;
   color: rgb(173, 127, 82);
   font-size: 1.5rem;
@@ -504,13 +511,13 @@ main .main_doctor .doctor_content .doctor_content_text h3 {
           background-clip: text;
   -webkit-text-fill-color: rgb(173, 127, 82);
 }
-main .main_doctor .doctor_content .doctor_content_text p {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text p {
   font-size: 2.25rem;
   font-weight: 600;
   color: rgb(102, 102, 102);
   line-height: 1.6;
 }
-main .main_doctor .doctor_content .doctor_content_text h4 {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text h4 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -521,20 +528,20 @@ main .main_doctor .doctor_content .doctor_content_text h4 {
   color: rgb(173, 127, 82);
   margin: 1.25rem 0 0 0;
 }
-main .main_doctor .doctor_content .doctor_content_text ul {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text ul {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   color: rgb(102, 102, 102);
 }
-main .main_doctor .doctor_content .doctor_content_text ul li {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text ul li {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 0 0 0 1.5625rem;
   line-height: 1.5;
 }
-main .main_doctor .doctor_content .doctor_content_text p {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text p {
   width: 31.25rem;
   font-size: 1rem;
   font-weight: 500;
@@ -543,12 +550,12 @@ main .main_doctor .doctor_content .doctor_content_text p {
   letter-spacing: 0.05rem;
   line-height: 1.7;
 }
-main .main_doctor .doctor_content .doctor_content_text .doctor_link_media {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text .doctor_top_link_media {
   display: flex;
   align-items: center;
   margin: 1.25rem 0 0 0;
 }
-main .main_doctor .doctor_content .doctor_content_text .doctor_link_media a {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text .doctor_top_link_media a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -564,10 +571,10 @@ main .main_doctor .doctor_content .doctor_content_text .doctor_link_media a {
   border-radius: 0.3125rem;
   margin-right: 1.5rem;
 }
-main .main_doctor .doctor_content .doctor_content_text .doctor_link_media a img {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text .doctor_top_link_media a img {
   width: 1.625rem;
 }
-main .main_doctor .doctor_content .doctor_content_text > a {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text > a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -578,7 +585,7 @@ main .main_doctor .doctor_content .doctor_content_text > a {
   border: 0.0625rem rgb(173, 127, 82) solid;
   color: white;
 }
-main .main_doctor .doctor_content .doctor_content_text > a img {
+main .main_doctor_top .doctor_top_content .doctor_top_content_text > a img {
   width: 1.625rem;
   margin: 0 0 0 0.625rem;
 }
@@ -715,55 +722,81 @@ main .main_case_top {
   font-family: "Noto Serif JP", "Yu Mincho", serif;
   padding: 4rem 0 5rem;
 }
-main .main_case_top .case_content_wrapper {
+main .case_top_content_wrapper {
   display: flex;
   justify-content: space-between;
   width: 62.5rem;
   margin: 3.125rem auto 0;
 }
-main .main_case_top .case_content_wrapper .case_content {
+main .case_top_content_wrapper .case_top_content,
+main .case_top_content_wrapper .case_link {
   width: 15rem;
   padding: 1.875rem 1.25rem 0 1.25rem;
   background-color: rgb(247, 247, 247);
   box-sizing: border-box;
 }
-main .main_case_top .case_content_wrapper .case_content .case_content_img {
-  width: 12.5rem;
-  height: 14rem;
-  border: 0.0625rem rgb(163, 129, 9) solid;
-}
-main .main_case_top .case_content_wrapper .case_content .case_content_text:nth-of-type(2) {
+main .case_top_content_wrapper .case_top_content .case_top_content_text:nth-of-type(2),
+main .case_top_content_wrapper .case_link .case_top_content_text:nth-of-type(2) {
   height: 2.8125rem;
   margin: 0.625rem 0 0.625rem 0;
 }
-main .main_case_top .case_content_wrapper .case_content .case_content_text:nth-of-type(3) {
+main .case_top_content_wrapper .case_top_content .case_top_content_text:nth-of-type(3),
+main .case_top_content_wrapper .case_link .case_top_content_text:nth-of-type(3) {
   height: 2.8125rem;
   margin: 0 0 0.625rem 0;
 }
-main .main_case_top .case_content_wrapper .case_content .case_content_text:nth-of-type(4) {
+main .case_top_content_wrapper .case_top_content .case_top_content_text:nth-of-type(4),
+main .case_top_content_wrapper .case_link .case_top_content_text:nth-of-type(4) {
   height: 3.1875rem;
   margin: 0 0 0.625rem 0;
 }
-main .main_case_top .case_content_wrapper .case_content .case_content_text:nth-of-type(5) {
+main .case_top_content_wrapper .case_top_content .case_top_content_text:nth-of-type(5),
+main .case_top_content_wrapper .case_link .case_top_content_text:nth-of-type(5) {
   height: 2.125rem;
   margin: 0 0 1.875rem 0;
 }
-main .main_case_top .case_content_wrapper .case_content h4 {
+main .case_top_content_wrapper .case_top_content h4,
+main .case_top_content_wrapper .case_link h4 {
   font-size: 0.75rem;
   font-weight: 500;
   color: rgb(175, 175, 175);
   letter-spacing: 0.0375rem;
 }
-main .main_case_top .case_content_wrapper .case_content p {
+main .case_top_content_wrapper .case_top_content p,
+main .case_top_content_wrapper .case_link p {
   font-size: 0.875rem;
   font-weight: 500;
   color: rgb(77, 77, 77);
   letter-spacing: 0.04375rem;
+  line-height: 1;
 }
-main .main_news {
+main .case_top_content_img,
+main .case_link_img,
+main .about_case_img {
+  width: 12.5rem;
+  height: 14rem;
+  border: 0.0625rem rgb(163, 129, 9) solid;
+}
+main .case_top_content_img > div,
+main .case_link_img > div,
+main .about_case_img > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 8.75rem;
+  background-color: white;
+}
+main .case_top_content_img > div p,
+main .case_link_img > div p,
+main .about_case_img > div p {
+  color: rgb(77, 77, 77);
+  margin: 0 0 0.625rem 0;
+}
+main .main_news_top {
   padding: 5rem 0;
 }
-main .main_news .news_content {
+main .main_news_top .news_top_content {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -775,11 +808,11 @@ main .main_news .news_content {
   border-radius: 10rem 0 0 10rem;
   font-family: "Noto Serif JP", "Yu Mincho", serif;
 }
-main .main_news .news_content .news_content_header {
+main .main_news_top .news_top_content .news_top_content_header {
   width: 10.4375rem;
   box-sizing: border-box;
 }
-main .main_news .news_content .news_content_header h2 {
+main .main_news_top .news_top_content .news_top_content_header h2 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -792,7 +825,7 @@ main .main_news .news_content .news_content_header h2 {
           background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-main .main_news .news_content .news_content_header h3 {
+main .main_news_top .news_top_content .news_top_content_header h3 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -806,13 +839,13 @@ main .main_news .news_content .news_content_header h3 {
   margin: 1rem auto 0;
   letter-spacing: 0.24rem;
 }
-main .main_news .news_content .news_content_header .features_bar {
+main .main_news_top .news_top_content .news_top_content_header .features_bar {
   width: 5rem;
   height: 0.0625rem;
   background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
   margin: 1rem auto 0 auto;
 }
-main .main_news .news_content .news_content_text_wrapper > a {
+main .main_news_top .news_top_content .news_top_content_text_wrapper > a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -823,10 +856,10 @@ main .main_news .news_content .news_content_text_wrapper > a {
   border: 0.0625rem rgb(173, 127, 82) solid;
   color: white;
 }
-main .main_news .news_content .news_content_text_wrapper > a img {
+main .main_news_top .news_top_content .news_top_content_text_wrapper > a img {
   margin: 0 0 0 0.625rem;
 }
-main .main_news .news_content .news_content_text_wrapper .news_content_text {
+main .main_news_top .news_top_content .news_top_content_text_wrapper .news_top_content_text {
   display: flex;
   justify-content: space-between;
   width: 31.9375rem;
@@ -835,21 +868,21 @@ main .main_news .news_content .news_content_text_wrapper .news_content_text {
   color: rgb(51, 51, 51);
   line-height: 1.6;
 }
-main .main_news .news_content .news_content_text_wrapper .news_content_text h4 {
+main .main_news_top .news_top_content .news_top_content_text_wrapper .news_top_content_text h4 {
   font-family: "cannia";
   font-weight: 200;
   color: rgb(102, 102, 102);
 }
-main .main_news .news_content > img {
+main .main_news_top .news_top_content > img {
   position: absolute;
 }
-main .main_news .news_content > img:nth-of-type(1) {
+main .main_news_top .news_top_content > img:nth-of-type(1) {
   bottom: 2.355625rem;
   left: 4.5rem;
   width: 8.75rem;
   height: 10.1875rem;
 }
-main .main_news .news_content > img:nth-of-type(2) {
+main .main_news_top .news_top_content > img:nth-of-type(2) {
   bottom: 1.5625rem;
   left: 9.8125rem;
   width: 5rem;
@@ -1034,14 +1067,20 @@ main .main_booking .booking_content h2, main .main_booking .booking_content h3 {
   width: -moz-fit-content;
   width: fit-content;
   font-weight: 600;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
   color: rgb(173, 127, 82);
   margin: 0 auto;
+  background: transparent;
+  background-clip: content-box;
+  -webkit-text-fill-color: inherit;
 }
 main .main_booking .booking_content h3 {
   font-size: 2rem;
 }
 main .main_booking .booking_content h2 {
   font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 main .main_booking .booking_content .booking_content_link {
   display: flex;
@@ -1239,90 +1278,11 @@ footer .footer_content_copyright {
   color: rgb(102, 102, 102);
   line-height: 1.6;
 }
-.main_price .price_header_content .price_link {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 0.8125rem;
-  font-family: "Noto Serif JP", "Yu Mincho", serif;
-  font-size: 0.9375rem;
-  color: rgb(192, 157, 123);
-  letter-spacing: 0.0375rem;
-  margin: 2.5rem 0 0 0;
-}
-.main_price .price_header_content .price_link a {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 15rem;
-  height: 3rem;
-  border: 0.0625rem solid rgb(192, 157, 123);
-  border-radius: 0.25rem;
-  background-color: white;
-  position: relative;
-  padding: 0 0 0 2.5rem;
-}
-.main_price .price_header_content .price_link a div {
-  width: 0.875rem;
-  height: 0.003125rem;
-  border: 0.0625rem solid rgb(192, 157, 123);
-  position: absolute;
-  left: 12.125rem;
-}
-.main_price .price_header_content .price_link a div::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto 0;
-  display: block;
-  width: 0.4375rem;
-  height: 0.09375rem;
-  transform-origin: right;
-  transform: rotate(45deg);
-  background-color: rgb(192, 157, 123);
-}
-.main_price .price_header_content .price_link a div::after {
-  position: absolute;
-  content: "";
-  top: 0;
-  bottom: 0;
-  margin: auto 0;
-  right: 0;
-  display: block;
-  width: 0.4375rem;
-  height: 0.09375rem;
-  transform-origin: right;
-  transform: rotate(-45deg);
-  background-color: rgb(192, 157, 123);
-}
 .main_price .price_content {
   width: 62.5rem;
   margin: 0 auto;
   font-family: "Yu Mincho", "Noto Serif JP", serif;
   line-height: 1;
-}
-.main_price .price_content .price_content_title {
-  display: flex;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  margin: 5rem 0 0 0;
-}
-.main_price .price_content .price_content_title > div {
-  display: block;
-  width: 0.1875rem;
-  height: 2.25rem;
-  background: linear-gradient(to bottom, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
-}
-.main_price .price_content .price_content_title h3 {
-  font-weight: 600;
-  font-size: 2.25rem;
-  letter-spacing: 0.36rem;
-  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
-  -webkit-background-clip: text;
-          background-clip: text;
-  -webkit-text-fill-color: transparent;
-  vertical-align: middle;
 }
 .main_price .price_content > div > p {
   font-size: 1rem;
@@ -1363,6 +1323,82 @@ footer .footer_content_copyright {
   display: inline-block;
   line-height: 1.2083333333;
   font-size: 1.5rem;
+}
+
+.price_link {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12.8px, 1rem, 24px) clamp(10.4px, 0.8125rem, 19.5px);
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: clamp(12px, 0.9375rem, 22.5px);
+  color: rgb(192, 157, 123);
+  letter-spacing: clamp(0.48px, 0.0375rem, 0.9px);
+  margin: clamp(32px, 2.5rem, 60px) 0 0 0;
+}
+.price_link a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: clamp(192px, 15rem, 360px);
+  height: clamp(38.4px, 3rem, 72px);
+  border: 0.0625rem solid rgb(192, 157, 123);
+  border-radius: 0.25rem;
+  background-color: white;
+  position: relative;
+  padding: 0 0 0 2.5rem;
+}
+.price_link a div {
+  width: clamp(11.2px, 0.875rem, 21px);
+  height: clamp(1.2px, 0.09375rem, 4.5px);
+  background-color: rgb(192, 157, 123);
+  position: absolute;
+  left: clamp(155.2px, 12.125rem, 291px);
+  border-radius: 9999px;
+}
+.price_link a div::before, .price_link a div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0;
+  display: block;
+  width: clamp(5.6px, 0.4375rem, 10.5px);
+  height: clamp(1.2px, 0.09375rem, 10.5px);
+  transform-origin: right;
+  background-color: rgb(192, 157, 123);
+  border-radius: 9999px;
+}
+.price_link a div::before {
+  transform: rotate(45deg);
+}
+.price_link a div::after {
+  transform: rotate(-45deg);
+}
+
+.price_content_title {
+  display: flex;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  margin: 5rem 0 0 0;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  line-height: 1;
+}
+.price_content_title > div {
+  display: block;
+  width: 0.1875rem;
+  height: 2.25rem;
+  background: linear-gradient(to bottom, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+}
+.price_content_title h3 {
+  font-weight: 600;
+  font-size: 2.25rem;
+  letter-spacing: 0.36rem;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  vertical-align: middle;
 }
 
 .main_treatment.main_price {
@@ -1466,12 +1502,18 @@ footer .footer_content_copyright {
        column-gap: 3.75rem;
 }
 
-.main_clinic .clinic_content_wrapper {
+.main_about_clinic.main_treatment.main_price h2 {
+  display: static;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.main_about_clinic.main_treatment.main_price .about_clinic_content_wrapper {
   margin: 2.6875rem 0 0 0;
   padding: 5rem 0;
   position: relative;
 }
-.main_clinic .clinic_bg {
+.main_about_clinic.main_treatment.main_price .about_clinic_bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -1480,12 +1522,12 @@ footer .footer_content_copyright {
   background: url("../img/clinic_bg.png") top/cover no-repeat;
   z-index: -1;
 }
-.main_clinic .clinic_content h3, .main_clinic .clinic_content p {
+.main_about_clinic.main_treatment.main_price .about_clinic_content h3, .main_about_clinic.main_treatment.main_price .about_clinic_content p {
   font-family: "Yu Mincho", "Noto Serif JP", serif;
   line-height: 1.6;
   letter-spacing: 0.08rem;
 }
-.main_clinic .clinic_content h3 {
+.main_about_clinic.main_treatment.main_price .about_clinic_content h3 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1497,14 +1539,14 @@ footer .footer_content_copyright {
           background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.main_clinic .clinic_content p {
+.main_about_clinic.main_treatment.main_price .about_clinic_content p {
   font-weight: 500;
   font-size: 1rem;
   margin: 1.5rem 0 0 0;
   color: rgb(102, 102, 102);
   text-align: center;
 }
-.main_clinic .clinic_content_wrapper:nth-of-type(3) > h3 {
+.main_about_clinic.main_treatment.main_price .about_clinic_content_wrapper:nth-of-type(3) > h3 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1518,7 +1560,7 @@ footer .footer_content_copyright {
   letter-spacing: 0.64rem;
   margin: 0 auto;
 }
-.main_clinic .clinic_content_wrapper:nth-of-type(3) > h4 {
+.main_about_clinic.main_treatment.main_price .about_clinic_content_wrapper:nth-of-type(3) > h4 {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -1532,20 +1574,20 @@ footer .footer_content_copyright {
   margin: 1rem auto 0;
   letter-spacing: 0.24rem;
 }
-.main_clinic .clinic_content_wrapper:nth-of-type(3) .features_bar {
+.main_about_clinic.main_treatment.main_price .about_clinic_content_wrapper:nth-of-type(3) .features_bar {
   width: 5rem;
   height: 0.0625rem;
   background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
   margin: 1rem auto 0 auto;
 }
-.main_clinic .clinic_content_wrapper:nth-of-type(3) .clinic_content {
+.main_about_clinic.main_treatment.main_price .about_clinic_content_wrapper:nth-of-type(3) .about_clinic_content {
   display: flex;
   justify-content: center;
   -moz-column-gap: 1.875rem;
        column-gap: 1.875rem;
   margin: 4rem 0 0 0;
 }
-.main_clinic .clinic_content_wrapper:nth-of-type(3) .clinic_content h4 {
+.main_about_clinic.main_treatment.main_price .about_clinic_content_wrapper:nth-of-type(3) .about_clinic_content h4 {
   font-family: "Zen Old Mincho", "Yu Mincho", serif;
   font-weight: 43.75rem;
   font-size: 1.25rem;
@@ -1553,7 +1595,7 @@ footer .footer_content_copyright {
   color: rgb(173, 127, 82);
   text-align: center;
 }
-.main_clinic .clinic_content_wrapper:nth-of-type(3) > p {
+.main_about_clinic.main_treatment.main_price .about_clinic_content_wrapper:nth-of-type(3) > p {
   font-family: "Yu Mincho", "Noto Serif JP", serif;
   line-height: 1.6;
   letter-spacing: 0.08rem;
@@ -1562,5 +1604,2084 @@ footer .footer_content_copyright {
   margin: 1.5rem 0 0 0;
   color: rgb(102, 102, 102);
   text-align: center;
+}
+
+.main_case {
+  padding: 5rem 0 0 0;
+}
+.main_case .case_content_wrapper {
+  display: block;
+  padding: clamp(64px, 5rem, 120px) 0 clamp(133.6px, 10.4375rem, 250.5px) 0;
+}
+.main_case .case_content_wrapper .case_content_title {
+  display: flex;
+  align-items: center;
+  width: clamp(160px, 12.5rem, 300px);
+  margin: 0 auto;
+  -moz-column-gap: clamp(19.2px, 1.5rem, 36px);
+       column-gap: clamp(19.2px, 1.5rem, 36px);
+}
+.main_case .case_content_wrapper .case_content_title img {
+  width: clamp(43.2px, 3.375rem, 81px);
+  height: clamp(16px, 1.25rem, 30px);
+}
+.main_case .case_content_wrapper .case_content_title img:nth-of-type(2) {
+  transform: scale(-1, 1);
+}
+.main_case .case_content_wrapper .case_content_title h3 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(25.6px, 2rem, 48px);
+  font-weight: 600;
+  letter-spacing: clamp(1.024px, 0.08rem, 1.92px);
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main_case .case_content_wrapper .case_link_wrapper {
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  flex-wrap: wrap;
+  row-gap: clamp(32px, 2.5rem, 60px);
+}
+.main_case .case_content_wrapper .case_link.case_top_content {
+  padding: 0;
+  background: transparent;
+}
+.main_case .case_content_wrapper .case_link.case_top_content .case_content_text.case_top_content_text {
+  height: clamp(36px, 2.8125rem, 67.5px);
+  margin: clamp(16px, 1.25rem, 30px) 0 0 0;
+}
+.main_case .case_content_wrapper .case_content_pagenation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: clamp(16px, 1.25rem, 30px);
+       column-gap: clamp(16px, 1.25rem, 30px);
+  width: clamp(150.4px, 11.75rem, 282px);
+  margin: clamp(64px, 5rem, 120px) auto 0;
+}
+.main_case .case_content_wrapper .case_content_pagenation > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(173, 127, 82);
+  font-size: clamp(16px, 1.25rem, 30px);
+  letter-spacing: clamp(0.64px, 0.05rem, 1.2px);
+  cursor: pointer;
+  font-family: "cannia", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+}
+.main_case .case_content_wrapper .case_content_pagenation .active,
+.main_case .case_content_wrapper .case_content_pagenation .next {
+  width: clamp(32px, 2.5rem, 60px);
+  height: clamp(32px, 2.5rem, 60px);
+  color: white;
+  background-color: rgb(173, 127, 82);
+  border-radius: 50%;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  letter-spacing: clamp(0.72px, 0.05625rem, 1.35px);
+}
+.main_case .case_content_wrapper .case_content_pagenation .next {
+  width: clamp(54.4px, 4.25rem, 102px);
+  height: clamp(24px, 1.875rem, 45px);
+  border-radius: 9999px;
+}
+.main_case .case_link_img.case_top_content_img {
+  width: clamp(192px, 15rem, 360px);
+  height: clamp(225.6px, 17.625rem, 423px);
+}
+.main_case .case_link_img.case_top_content_img > div:nth-of-type(2) {
+  background-color: rgb(247, 247, 247);
+}
+
+.main_about_case .about_case_bg {
+  width: 100%;
+  height: clamp(64px, 5rem, 120px);
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 0.3;
+  margin: clamp(64px, 5rem, 120px) 0 0 0;
+}
+.main_about_case .about_case_content_wrapper {
+  width: clamp(800px, 62.5rem, 1500px);
+  padding: clamp(64px, 5rem, 120px) 0;
+  margin: 0 auto;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  line-height: 1;
+}
+.main_about_case .about_case_content_wrapper h3 {
+  font-size: clamp(28.8px, 2.25rem, 54px);
+  font-weight: 600;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main_about_case .about_case_content_wrapper .about_case_border {
+  width: 100%;
+  height: clamp(0.8px, 0.0625rem, 1.5px);
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  margin: clamp(6.4px, 0.5rem, 12px) 0 0 0;
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper {
+  width: clamp(352px, 27.5rem, 660px);
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_img {
+  width: 100%;
+  height: clamp(395.2px, 30.875rem, 741px);
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_img > div {
+  height: clamp(196.8px, 15.375rem, 369px);
+  color: rgb(102, 102, 102);
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_img > div p {
+  font-size: clamp(19.68px, 1.5375rem, 36.9px);
+  margin: 0 0 clamp(15.2px, 1.1875rem, 28.5px) 0;
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation {
+  width: clamp(284px, 22.1875rem, 532.5px);
+  height: clamp(64px, 5rem, 120px);
+  position: relative;
+  margin: 0 auto;
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .prev,
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .next {
+  top: clamp(16px, 1.25rem, 30px);
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .prev {
+  left: 0;
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .next {
+  right: 0;
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .page_dots {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: clamp(60px, 4.6875rem, 112.5px);
+  height: clamp(12px, 0.9375rem, 22.5px);
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .page_dots div {
+  border-radius: 50%;
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .page_dots div:nth-of-type(1) {
+  width: clamp(12px, 0.9375rem, 22.5px);
+  height: clamp(12px, 0.9375rem, 22.5px);
+  background: rgb(175, 148, 84);
+}
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .page_dots div:nth-of-type(2),
+.main_about_case .about_case_content_wrapper .about_case_img_wrapper .about_case_pagenation .page_dots div:nth-of-type(3) {
+  width: clamp(8px, 0.625rem, 15px);
+  height: clamp(8px, 0.625rem, 15px);
+  background-color: rgb(217, 217, 217);
+}
+.main_about_case .about_case_content_wrapper .about_case_content {
+  display: flex;
+  justify-content: space-between;
+  margin: clamp(32px, 2.5rem, 60px) 0 0 0;
+}
+.main_about_case .about_case_content_wrapper .about_case_content .about_case_text_wrapper {
+  width: clamp(352px, 27.5rem, 660px);
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+}
+.main_about_case .about_case_content_wrapper .about_case_content .about_case_text {
+  line-height: 1;
+  font-weight: 500;
+  padding: clamp(4px, 0.3125rem, 7.5px) 0;
+}
+.main_about_case .about_case_content_wrapper .about_case_content .about_case_text h4 {
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  color: rgb(175, 175, 175);
+  line-height: 1.4285714286;
+  letter-spacing: clamp(0.56px, 0.04375rem, 1.05px);
+}
+.main_about_case .about_case_content_wrapper .about_case_content .about_case_text p {
+  font-size: clamp(12.8px, 1rem, 24px);
+  color: rgb(102, 102, 102);
+  line-height: 1.5;
+  letter-spacing: clamp(0.64px, 0.05rem, 1.2px);
+}
+.main_about_case .about_case_content_wrapper .about_case_content .about_case_border {
+  background: rgb(175, 148, 84);
+  margin: 0;
+}
+.main_about_case .about_case_content_wrapper .about_case_content .about_case_text:not(:nth-of-type(1)) {
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+}
+
+.content_brown_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: clamp(8px, 0.625rem, 15px);
+       column-gap: clamp(8px, 0.625rem, 15px);
+  width: clamp(336px, 26.25rem, 630px);
+  height: clamp(51.2px, 4rem, 96px);
+  margin: clamp(32px, 2.5rem, 60px) auto 0;
+  background-color: rgb(192, 157, 123);
+  border: 0.0625rem rgb(173, 127, 82) solid;
+  color: white;
+}
+.content_brown_button img {
+  width: clamp(20.8px, 1.625rem, 39px);
+  margin: 0;
+  transform: rotate(180deg);
+}
+
+.main_clinic .clinic_header_wrapper {
+  background-image: none;
+  position: relative;
+}
+.main_clinic .clinic_header_wrapper .clinic_header_bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: clamp(166.4px, 13rem, 312px);
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 30%;
+}
+.main_clinic .clinic_header_content .clinic_link {
+  margin: 0;
+}
+.main_clinic .clinic_header_content .clinic_link a {
+  cursor: pointer;
+}
+.main_clinic .clinic_content_bg {
+  background-color: rgb(255, 249, 245);
+}
+.main_clinic .clinic_content_wrapper {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_clinic .clinic_content_wrapper .clinic_content_title {
+  margin: 0;
+}
+.main_clinic .clinic_content_wrapper .clinic_content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: clamp(52.8px, 4.125rem, 99px) 0 0 0;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  line-height: 1;
+}
+.main_clinic .clinic_content_wrapper .clinic_content > img {
+  display: block;
+  width: clamp(400px, 31.25rem, 750px);
+  border-radius: clamp(8px, 0.625rem, 15px);
+}
+.main_clinic .clinic_content_wrapper .clinic_content .clinic_content_text_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: clamp(324px, 25.3125rem, 607.5px);
+}
+.main_clinic .clinic_content_wrapper .clinic_content .clinic_content_text {
+  width: clamp(336px, 26.25rem, 630px);
+}
+.main_clinic .clinic_content_wrapper .clinic_content .clinic_content_text h4 {
+  font-weight: 600;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  letter-spacing: clamp(2.304px, 0.18rem, 4.32px);
+  color: rgb(173, 127, 82);
+}
+.main_clinic .clinic_content_wrapper .clinic_content .clinic_content_text p {
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  letter-spacing: clamp(2.048px, 0.16rem, 3.84px);
+  color: rgb(102, 102, 102);
+}
+.main_clinic .clinic_content_wrapper .clinic_content .content_brown_button > img {
+  transform: none;
+}
+
+.main_flow {
+  padding: clamp(48px, 3.75rem, 90px) 0 0 0;
+}
+.main_flow .flow_content_wrapper {
+  position: relative;
+  margin: clamp(64px, 5rem, 120px) 0 0 0;
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_flow .flow_content_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(1152px, 90rem, 2160px);
+  height: 100%;
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 30%;
+  z-index: -1;
+}
+.main_flow .flow_content_bgcolor {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+  padding: clamp(32px, 2.5rem, 60px) clamp(64px, 5rem, 120px);
+  background-color: white;
+}
+.main_flow .flow_content {
+  display: flex;
+  width: clamp(800px, 62.5rem, 1500px);
+  -moz-column-gap: clamp(38.4px, 3rem, 72px);
+       column-gap: clamp(38.4px, 3rem, 72px);
+}
+.main_flow .flow_content .flow_content_img {
+  display: flex;
+  align-items: center;
+}
+.main_flow .flow_content .flow_content_img img {
+  width: clamp(160px, 12.5rem, 300px);
+  height: clamp(160px, 12.5rem, 300px);
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(192, 157, 123);
+  margin: auto 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  box-shadow: 0 clamp(3.2px, 0.25rem, 6px) clamp(3.2px, 0.25rem, 6px) rgba(0, 0, 0, 0.05);
+  background-color: rgb(217, 217, 217);
+}
+.main_flow .flow_content .flow_content_text {
+  width: clamp(520px, 40.625rem, 975px);
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: clamp(19.2px, 1.5rem, 36px);
+}
+.main_flow .flow_content .flow_content_text h3 {
+  font-family: "cannia", sans-serif;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  font-weight: 400;
+  letter-spacing: clamp(1.152px, 0.09rem, 2.16px);
+  color: rgb(173, 127, 82);
+}
+.main_flow .flow_content .flow_content_text h4 {
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 500;
+  font-size: clamp(19.2px, 1.5rem, 36px);
+  color: rgb(102, 102, 102);
+}
+.main_flow .flow_content .flow_content_text p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(12.8px, 1rem, 24px);
+  font-weight: 500;
+  line-height: 2;
+  color: rgb(102, 102, 102);
+}
+.main_flow .flow_content .flow_content_text a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: clamp(48px, 3.75rem, 90px);
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(175, 148, 84);
+  border-radius: 9999px;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  letter-spacing: clamp(0.128px, 0.01rem, 0.24px);
+  color: rgb(175, 148, 84);
+}
+.main_flow .flow_content .flow_content_text a > div {
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  -moz-column-gap: clamp(8.8px, 0.6875rem, 16.5px);
+       column-gap: clamp(8.8px, 0.6875rem, 16.5px);
+  padding: 0 clamp(12.8px, 1rem, 24px);
+  line-height: 1;
+}
+.main_flow .flow_content .flow_content_text a > div div {
+  width: clamp(3.2px, 0.25rem, 6px);
+  height: clamp(8px, 0.625rem, 15px);
+  background-color: rgb(175, 148, 84);
+  -webkit-clip-path: polygon(15% 5%, 100% 50%, 15% 95%);
+          clip-path: polygon(15% 5%, 100% 50%, 15% 95%);
+}
+.main_flow .flow_polygon {
+  width: clamp(24px, 1.875rem, 45px);
+  height: clamp(19.2px, 1.5rem, 36px);
+  -webkit-clip-path: polygon(0 6.6666666667%, 100% 6.6666666667%, 50% 100%);
+          clip-path: polygon(0 6.6666666667%, 100% 6.6666666667%, 50% 100%);
+  background-color: rgb(175, 148, 84);
+  margin: clamp(16px, 1.25rem, 30px) auto;
+}
+
+.main_aftercare {
+  padding: clamp(64px, 5rem, 120px) 0 0 0;
+}
+.main_aftercare .aftercare_content_wrapper {
+  position: relative;
+  margin: clamp(64px, 5rem, 120px) 0 0 0;
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_aftercare .aftercare_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 30%;
+  z-index: -1;
+}
+.main_aftercare .aftercare_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+}
+.main_aftercare .aftercare_content img {
+  display: block;
+  width: clamp(384px, 30rem, 720px);
+  height: clamp(288px, 22.5rem, 540px);
+  background-color: rgb(217, 217, 217);
+  border-radius: clamp(8px, 0.625rem, 15px);
+}
+.main_aftercare .aftercare_content .aftercare_content_text {
+  width: clamp(352px, 27.5rem, 660px);
+}
+.main_aftercare .aftercare_content .aftercare_content_text h3, .main_aftercare .aftercare_content .aftercare_content_text p {
+  font-weight: 500;
+  line-height: 1.6;
+}
+.main_aftercare .aftercare_content .aftercare_content_text h3 {
+  font-family: "Zen Old Mincho", "Noto Serif JP", serif;
+  font-size: clamp(19.2px, 1.5rem, 36px);
+  color: rgb(173, 127, 82);
+}
+.main_aftercare .aftercare_content .aftercare_content_text .aftercare_border {
+  width: clamp(64px, 5rem, 120px);
+  height: clamp(0.8px, 0.0625rem, 1.5px);
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  margin: clamp(6.4px, 0.5rem, 12px) 0 0 0;
+}
+.main_aftercare .aftercare_content .aftercare_content_text p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(12.8px, 1rem, 24px);
+  color: rgb(102, 102, 102);
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.main_aftercare .aftercare_content_wrapper:nth-of-type(3) .aftercare_content {
+  flex-direction: row-reverse;
+}
+
+.main_faq {
+  padding: clamp(64px, 5rem, 120px) 0 0 0;
+}
+.main_faq .main_faq_bg {
+  width: 100%;
+  height: clamp(64px, 5rem, 120px);
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  margin: clamp(64px, 5rem, 120px) 0 0 0;
+  opacity: 30%;
+}
+.main_faq .faq_content_wrapper {
+  padding: clamp(64px, 5rem, 120px) 0 0 0;
+}
+.main_faq .faq_content {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto clamp(19.2px, 1.5rem, 36px);
+}
+.main_faq .faq_content .question,
+.main_faq .faq_content .answer {
+  display: flex;
+  justify-content: space-between;
+  border-radius: clamp(8px, 0.625rem, 15px);
+}
+.main_faq .faq_content .question .circle,
+.main_faq .faq_content .answer .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(28.8px, 2.25rem, 54px);
+  height: clamp(28.8px, 2.25rem, 54px);
+  font-family: "cannia", sans-serif;
+  font-size: clamp(12.8px, 1rem, 24px);
+  font-weight: 400;
+  line-height: 1.125;
+  letter-spacing: 0;
+  border-radius: 50%;
+}
+.main_faq .faq_content .question p,
+.main_faq .faq_content .answer p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  color: rgb(102, 102, 102);
+}
+.main_faq .faq_content .question {
+  padding: clamp(12.8px, 1rem, 24px) clamp(19.2px, 1.5rem, 36px);
+  background-color: rgb(247, 247, 247);
+  align-items: center;
+  cursor: pointer;
+}
+.main_faq .faq_content .question .circle {
+  background-color: rgb(173, 127, 82);
+  color: white;
+}
+.main_faq .faq_content .question p {
+  width: clamp(681.6px, 53.25rem, 1278px);
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.7;
+}
+.main_faq .faq_content .question .toggle_button {
+  width: clamp(21.6px, 1.6875rem, 40.5px);
+  height: clamp(21.6px, 1.6875rem, 40.5px);
+  opacity: 1;
+  transition-duration: 600ms;
+  position: relative;
+}
+.main_faq .faq_content .question .toggle_button::before {
+  content: "";
+  display: block;
+  width: clamp(12.8px, 1rem, 24px);
+  height: clamp(1.6px, 0.125rem, 3px);
+  background-color: rgb(173, 127, 82);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+.main_faq .faq_content .question .toggle_button::after {
+  content: "";
+  display: block;
+  width: clamp(12.8px, 1rem, 24px);
+  height: clamp(1.6px, 0.125rem, 3px);
+  background-color: rgb(173, 127, 82);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto 0;
+  transform: rotate(90deg);
+  opacity: 1;
+  transition: opacity 400ms, transform 400ms;
+}
+.main_faq .faq_content .question .toggle_button.open::after {
+  transform: rotate(0);
+  opacity: 0;
+}
+.main_faq .faq_content .answer_wrapper {
+  display: none;
+  flex-direction: column;
+  max-height: 0;
+  transform: scaleY(0);
+  opacity: 0;
+  transform-origin: top;
+  transition: display 400ms ease, transform 400ms ease-out, opacity 400ms ease-out, max-height 400ms ease-out;
+  transition-behavior: allow-discrete;
+}
+@starting-style {
+  .main_faq .faq_content .answer_wrapper {
+    max-height: 9999px;
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+.main_faq .faq_content .answer_wrapper.open {
+  display: flex;
+  transform: scaleY(1);
+  max-height: 999px;
+  opacity: 1;
+}
+@starting-style {
+  .main_faq .faq_content .answer_wrapper.open {
+    max-height: 0;
+    transform: scaleY(0);
+    opacity: 0;
+  }
+}
+.main_faq .faq_content .answer {
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+  padding: 0 clamp(20.8px, 1.625rem, 39px);
+}
+.main_faq .faq_content .answer .circle {
+  border: clamp(0.4px, 0.03125rem, 0.75px) solid rgb(173, 127, 82);
+  color: rgb(173, 127, 82);
+  flex-shrink: 0;
+}
+.main_faq .faq_content .answer p {
+  width: clamp(710.4px, 55.5rem, 1332px);
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  letter-spacing: clamp(0.448px, 0.035rem, 0.84px);
+}
+.main_faq .faq_content .faq_link {
+  margin: clamp(28.8px, 2.25rem, 54px) 0 0 0;
+  justify-content: center;
+}
+.main_faq .faq_content .faq_link a {
+  -moz-column-gap: clamp(19.2px, 1.5rem, 36px);
+       column-gap: clamp(19.2px, 1.5rem, 36px);
+}
+.main_faq .faq_content .faq_link .price_arrow {
+  position: relative;
+  left: auto;
+}
+
+.main_doctor {
+  padding: clamp(64px, 5rem, 120px) 0 0 0;
+}
+.main_doctor .doctor_content_wrapper:not(:nth-of-type(2)) {
+  margin: 0;
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_doctor .doctor_content_wrapper:not(:nth-of-type(2)) img {
+  background-color: #D9D9D9;
+}
+.main_doctor .doctor_content_wrapper:nth-of-type(3) img {
+  width: clamp(384px, 30rem, 720px);
+  height: clamp(288px, 22.5rem, 540px);
+  border-radius: clamp(8px, 0.625rem, 15px);
+}
+.main_doctor .doctor_content_wrapper:nth-of-type(3) .doctor_content {
+  padding: 0;
+  margin: clamp(51.2px, 4rem, 96px) auto 0;
+  align-items: center;
+}
+.main_doctor .doctor_content_wrapper:nth-of-type(3) .doctor_content_text {
+  width: clamp(352px, 27.5rem, 660px);
+}
+.main_doctor .doctor_content_wrapper:nth-of-type(3) .doctor_content_text p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #666666;
+}
+.main_doctor .doctor_content_wrapper:nth-of-type(4) {
+  background-color: #FFF9F5;
+}
+.main_doctor .doctor_content_wrapper:nth-of-type(4) img {
+  width: clamp(144px, 11.25rem, 270px);
+  height: clamp(144px, 11.25rem, 270px);
+}
+.main_doctor .doctor_content_wrapper:nth-of-type(4) .doctor_content {
+  padding: 0;
+  margin: clamp(51.2px, 4rem, 96px) auto 0;
+  background-color: transparent;
+}
+
+.doctor_content_wrapper {
+  position: relative;
+  margin: clamp(64px, 5rem, 120px) 0 0 0;
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.doctor_content_wrapper > h2 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 4rem;
+  font-weight: 200;
+  font-family: "cannia";
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.64rem;
+  margin: 0 auto;
+}
+.doctor_content_wrapper > h3 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 1.5rem;
+  font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+  font-weight: 400;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1rem auto 0;
+  letter-spacing: 0.24rem;
+}
+.doctor_content_wrapper .features_bar {
+  width: 5rem;
+  height: 0.0625rem;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  margin: 1rem auto 0 auto;
+}
+
+.doctor_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/content_bg_origin.jpg") center/cover transparent;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.doctor_content {
+  display: flex;
+  justify-content: space-between;
+  width: clamp(818.4px, 63.9375rem, 1534.5px);
+  margin: 0 auto;
+  padding: clamp(32px, 2.5rem, 60px);
+  background-color: white;
+  position: relative;
+}
+.doctor_content h3 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(19.2px, 1.5rem, 36px);
+  line-height: 1.7;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.doctor_content h4 {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.6;
+  color: #CCCCCC;
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.doctor_content h4:nth-of-type(1) {
+  line-height: 1;
+}
+.doctor_content p span {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(28.8px, 2.25rem, 54px);
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: #666666;
+}
+.doctor_content .doctor_border {
+  width: clamp(72px, 5.625rem, 135px);
+  height: clamp(1.6px, 0.125rem, 3px);
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+}
+.doctor_content h5 {
+  font-size: clamp(12.8px, 1rem, 24px);
+  font-family: "cannia", sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  color: #CCCCCC;
+  position: absolute;
+  top: clamp(136.8px, 10.6875rem, 256.5px);
+  left: clamp(106.4px, 8.3125rem, 199.5px);
+}
+.doctor_content p {
+  font-family: "Zen Old Mincho", "Yu Mincho", serif;
+  font-size: clamp(12.8px, 1rem, 24px);
+  font-weight: 500;
+  line-height: 1.6;
+  color: #666666;
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+}
+.doctor_content p:first-of-type {
+  margin: 0;
+}
+.doctor_content img {
+  width: clamp(316px, 24.6875rem, 592.5px);
+}
+.doctor_content .doctor_content_media {
+  display: flex;
+  justify-content: center;
+  -moz-column-gap: clamp(19.2px, 1.5rem, 36px);
+       column-gap: clamp(19.2px, 1.5rem, 36px);
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.doctor_content .doctor_content_media a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  -moz-column-gap: clamp(25.6px, 2rem, 48px);
+       column-gap: clamp(25.6px, 2rem, 48px);
+  padding: clamp(9.6px, 0.75rem, 18px) clamp(16px, 1.25rem, 30px);
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid #AD7F52;
+  border-radius: clamp(16px, 1.25rem, 30px);
+}
+.doctor_content .doctor_content_media a div {
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: clamp(0.448px, 0.035rem, 0.84px);
+  color: #444444;
+}
+.doctor_content .doctor_content_media img {
+  width: clamp(20.8px, 1.625rem, 39px);
+  height: clamp(20.8px, 1.625rem, 39px);
+}
+
+.main_policy {
+  padding: clamp(64px, 5rem, 120px) 0 0 0;
+}
+.main_policy .policy_bg {
+  width: 100%;
+  height: clamp(64px, 5rem, 120px);
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 30%;
+  margin: clamp(64px, 5rem, 120px) 0 0 0;
+}
+.main_policy .policy_bg:nth-of-type(4) {
+  margin: 0;
+}
+.main_policy .policy_content_wrapper {
+  padding: clamp(32px, 2.5rem, 60px) 0 clamp(64px, 5rem, 120px);
+}
+.main_policy .policy_content_wrapper > p {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.7;
+  letter-spacing: clamp(0.256px, 0.02rem, 0.48px);
+  color: #666666;
+}
+.main_policy .policy_content_wrapper .policy_content {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: clamp(28.8px, 2.25rem, 54px) auto 0;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+}
+.main_policy .policy_content_wrapper .policy_content .policy_content_title {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: clamp(6.4px, 0.5rem, 12px);
+       column-gap: clamp(6.4px, 0.5rem, 12px);
+}
+.main_policy .policy_content_wrapper .policy_content .policy_content_title h3 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: clamp(19.2px, 1.5rem, 36px);
+  font-weight: 600;
+  letter-spacing: clamp(1.152px, 0.09rem, 2.16px);
+  line-height: 1;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main_policy .policy_content_wrapper .policy_content .policy_border {
+  width: clamp(2.4px, 0.1875rem, 4.5px);
+  height: clamp(25.6px, 2rem, 48px);
+  background: linear-gradient(to bottom, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+}
+.main_policy .policy_content_wrapper .policy_content p {
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+  font-size: clamp(12.8px, 1rem, 24px);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0;
+  color: rgb(102, 102, 102);
+}
+.main_policy .policy_content_wrapper .policy_content ul {
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+  color: rgb(102, 102, 102);
+  list-style: none;
+}
+.main_policy .policy_content_wrapper .policy_content ul li {
+  font-size: clamp(12.8px, 1rem, 24px);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+.main_policy .policy_content_wrapper .policy_content:nth-of-type(1) {
+  margin: clamp(32px, 2.5rem, 60px) auto 0;
+}
+
+.main_column {
+  padding: 0;
+}
+.main_column .column_content_header {
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_column .column_content_header > h2 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 4rem;
+  font-weight: 200;
+  font-family: "cannia";
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.64rem;
+  margin: 0 auto;
+}
+.main_column .column_content_header > h3 {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 1.5rem;
+  font-family: "Noto Serif JP", "Yu Mincho", "游明朝体", serif;
+  font-weight: 400;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 1rem auto 0;
+  letter-spacing: 0.24rem;
+}
+.main_column .column_content_header .features_bar {
+  width: 5rem;
+  height: 0.0625rem;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  margin: 1rem auto 0 auto;
+}
+.main_column .column_bg {
+  width: 100%;
+  height: clamp(64px, 5rem, 120px);
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 30%;
+}
+.main_column .column_content_wrapper {
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_column .column_content_wrapper .column_content {
+  display: flex;
+  justify-content: space-between;
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+}
+.main_column .column_content_wrapper .column_content .column_content_button {
+  width: clamp(128px, 10rem, 240px);
+}
+.main_column .column_content_wrapper .column_content .column_content_button > a {
+  width: 100%;
+  font-family: "cannia", sans-serif;
+  font-weight: 400;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  line-height: 1;
+  letter-spacing: clamp(0.576px, 0.045rem, 1.08px);
+  color: white;
+  background-color: rgb(192, 157, 123);
+  padding: clamp(8.8px, 0.6875rem, 16.5px) 0;
+  border-radius: clamp(4px, 0.3125rem, 7.5px);
+  text-align: center;
+}
+.main_column .column_content_wrapper .column_content .column_content_button .column_border {
+  width: 100%;
+  height: clamp(0.8px, 0.0625rem, 1.5px);
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  margin: clamp(12.8px, 1rem, 24px) 0;
+}
+.main_column .column_content_wrapper .column_content .column_content_button h4 {
+  color: rgb(173, 127, 82);
+  font-family: "cannia", sans-serif;
+  font-weight: 400;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  line-height: 1;
+  letter-spacing: clamp(0.576px, 0.045rem, 1.08px);
+}
+.main_column .column_content_wrapper .column_content .column_content_button .column_category_link {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(6.4px, 0.5rem, 12px);
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+}
+.main_column .column_content_wrapper .column_content .column_content_button .column_category_link a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(104px, 8.125rem, 195px);
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(9.6px, 0.75rem, 18px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: clamp(0.384px, 0.03rem, 0.72px);
+  color: rgb(102, 102, 102);
+  padding: clamp(4.8px, 0.375rem, 9px) 0;
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(192, 157, 123);
+  border-radius: clamp(3.2px, 0.25rem, 6px);
+}
+.main_column .column_content_wrapper .column_content .column_article {
+  display: flex;
+  align-items: center;
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.main_column .column_content_wrapper .column_content .column_article img {
+  width: clamp(128px, 10rem, 240px);
+  height: clamp(96px, 7.5rem, 180px);
+  border-radius: clamp(8px, 0.625rem, 15px);
+  background-color: rgb(217, 217, 217);
+}
+.main_column .column_content_wrapper .column_content .column_article .column_article_text {
+  margin: 0 0 0 clamp(19.2px, 1.5rem, 36px);
+}
+.main_column .column_content_wrapper .column_content .column_article .column_article_text h4 {
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 500;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  line-height: 1;
+  letter-spacing: clamp(0.72px, 0.05625rem, 1.35px);
+  color: rgb(102, 102, 102);
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+}
+.main_column .column_content_wrapper .column_content .column_article .column_article_text div {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: clamp(12.8px, 1rem, 24px);
+       column-gap: clamp(12.8px, 1rem, 24px);
+}
+.main_column .column_content_wrapper .column_content .column_article .column_article_text div time {
+  font-family: "cannia", sans-serif;
+  font-weight: 400;
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  line-height: 1;
+  letter-spacing: clamp(0.448px, 0.035rem, 0.84px);
+  color: rgb(175, 175, 175);
+}
+.main_column .column_content_wrapper .column_content .column_article .column_article_text div a {
+  color: white;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 500;
+  font-size: clamp(9.6px, 0.75rem, 18px);
+  line-height: 1;
+  letter-spacing: clamp(0.384px, 0.03rem, 0.72px);
+  width: clamp(62.4px, 4.875rem, 117px);
+  padding: clamp(3.2px, 0.25rem, 6px) 0;
+  background-color: rgb(173, 127, 82);
+  border-radius: clamp(8px, 0.625rem, 15px);
+  text-align: center;
+}
+.main_column .column_content_wrapper .column_content .column_article > a {
+  width: clamp(32px, 2.5rem, 60px);
+  height: clamp(32px, 2.5rem, 60px);
+  position: relative;
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(192, 157, 123);
+  border-radius: 50%;
+  margin: 0 0 0 clamp(62.4px, 4.875rem, 117px);
+}
+.main_column .column_content_wrapper .column_content .column_article > a div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: clamp(10.4px, 0.8125rem, 19.5px);
+  height: clamp(0.8px, 0.0625rem, 1.5px);
+  background-color: rgb(173, 127, 82);
+}
+.main_column .column_content_wrapper .column_content .column_article > a div::before, .main_column .column_content_wrapper .column_content .column_article > a div::after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: clamp(4.8px, 0.375rem, 9px);
+  height: clamp(0.8px, 0.0625rem, 1.5px);
+  background-color: rgb(173, 127, 82);
+  transform-origin: right;
+  right: 0;
+}
+.main_column .column_content_wrapper .column_content .column_article > a div::before {
+  transform: rotate(40deg);
+}
+.main_column .column_content_wrapper .column_content .column_article > a div::after {
+  transform: rotate(-40deg);
+}
+.main_column .column_content_wrapper .column_content .column_article:first-of-type {
+  margin: 0;
+}
+.main_column .column_content_wrapper .column_content .column_border {
+  width: 100%;
+  height: clamp(0.8px, 0.0625rem, 1.5px);
+  background-color: rgb(239, 218, 198);
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+
+.column_pagenation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: clamp(16px, 1.25rem, 30px);
+       column-gap: clamp(16px, 1.25rem, 30px);
+  margin: clamp(32px, 2.5rem, 60px) 0 0 0;
+  font-family: "cannia", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+}
+.column_pagenation a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(16px, 1.25rem, 30px);
+  color: rgb(173, 127, 82);
+  letter-spacing: clamp(0.8px, 0.0625rem, 1.5px);
+}
+.column_pagenation a.active {
+  width: clamp(32px, 2.5rem, 60px);
+  height: clamp(32px, 2.5rem, 60px);
+  background-color: rgb(173, 127, 82);
+  border-radius: 50%;
+  color: white;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  letter-spacing: clamp(0.72px, 0.05625rem, 1.35px);
+}
+.column_pagenation a.next {
+  width: clamp(54.4px, 4.25rem, 102px);
+  height: clamp(24px, 1.875rem, 45px);
+  border-radius: 9999px;
+  background-color: rgb(173, 127, 82);
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  color: white;
+  letter-spacing: clamp(0.72px, 0.05625rem, 1.35px);
+}
+
+.main_about_column .about_column_bg {
+  width: 100%;
+  height: clamp(64px, 5rem, 120px);
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 0.3;
+}
+.main_about_column .about_column_content_wrapper {
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_about_column .about_column_content {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+}
+.main_about_column .about_column_content img {
+  display: block;
+  width: 100%;
+  height: clamp(352px, 27.5rem, 660px);
+  background-color: rgb(217, 217, 217);
+  border-radius: clamp(8px, 0.625rem, 15px);
+}
+.main_about_column .about_column_content > .category_button {
+  color: white;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 500;
+  font-size: clamp(9.6px, 0.75rem, 18px);
+  line-height: 1;
+  letter-spacing: clamp(0.384px, 0.03rem, 0.72px);
+  width: clamp(62.4px, 4.875rem, 117px);
+  padding: clamp(3.2px, 0.25rem, 6px) 0;
+  background-color: rgb(173, 127, 82);
+  border-radius: clamp(8px, 0.625rem, 15px);
+  text-align: center;
+}
+.main_about_column .about_column_content > a {
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.main_about_column .about_column_content h1 {
+  font-weight: 800;
+  font-size: clamp(28.8px, 2.25rem, 54px);
+  line-height: 1.5;
+  color: rgb(173, 127, 82);
+  margin: clamp(6.4px, 0.5rem, 12px) 0 0 0;
+}
+.main_about_column .about_column_content p {
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.78;
+  color: rgb(102, 102, 102);
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.main_about_column .about_column_content .about_column_menu {
+  border-collapse: collapse;
+  border-radius: clamp(8px, 0.625rem, 15px);
+  overflow: hidden;
+  margin: clamp(25.6px, 2rem, 48px) 0 0 0;
+}
+.main_about_column .about_column_content .about_column_menu h3 {
+  color: white;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  line-height: 1.3333333333;
+  background-color: rgb(192, 157, 123);
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(204, 204, 204);
+  padding: clamp(12.8px, 1rem, 24px) 0 clamp(12.8px, 1rem, 24px) clamp(25.6px, 2rem, 48px);
+}
+.main_about_column .about_column_content .about_column_menu > div {
+  color: rgb(102, 102, 102);
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  font-weight: 500;
+  line-height: 1.7777777778;
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(204, 204, 204);
+  border-top: transparent;
+  padding: clamp(12.8px, 1rem, 24px) 0 clamp(12.8px, 1rem, 24px) clamp(25.6px, 2rem, 48px);
+}
+.main_about_column .about_column_content h2 {
+  margin: clamp(44.8px, 3.5rem, 84px) 0 0 0;
+  color: rgb(173, 127, 82);
+  font-weight: 800;
+  font-size: clamp(25.6px, 2rem, 48px);
+  line-height: 1.78;
+}
+.main_about_column .about_column_content h2 + p {
+  margin: clamp(38.4px, 3rem, 72px) 0 0 0;
+}
+.main_about_column .about_column_content h3 {
+  margin: clamp(45.6px, 3.5625rem, 85.5px) 0 0 0;
+  color: rgb(173, 127, 82);
+  font-weight: 800;
+  font-size: clamp(16px, 1.25rem, 30px);
+  line-height: 1.78;
+}
+.main_about_column .about_column_content h3 + p {
+  margin: clamp(51.2px, 4rem, 96px) 0 0 0;
+}
+.main_about_column .about_column_content .about_column_img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(25.6px, 2rem, 48px) 0 clamp(12.8px, 1rem, 24px);
+  margin: clamp(25.6px, 2rem, 48px) 0 0 0;
+}
+.main_about_column .about_column_content .about_column_img img {
+  width: clamp(659.2px, 51.5rem, 1236px);
+  height: clamp(240px, 18.75rem, 450px);
+}
+.main_about_column .about_column_content .about_column_img p {
+  width: clamp(667.2px, 52.125rem, 1251px);
+  color: rgb(137, 137, 137);
+  margin: clamp(8px, 0.625rem, 15px) 0 0 0;
+}
+.main_about_column .about_column_content .about_column_img + p {
+  margin: clamp(51.2px, 4rem, 96px) 0 0 0;
+}
+.main_about_column .about_column_content .content_brown_button {
+  margin: clamp(64px, 5rem, 120px) auto 0;
+}
+.main_about_column .about_column_content .content_brown_button img {
+  width: clamp(20.8px, 1.625rem, 39px);
+  height: clamp(20.8px, 1.625rem, 39px);
+  background-color: transparent;
+}
+.main_about_column .doctor_content_wrapper {
+  margin: 0;
+}
+
+.main_news .news_content_wrapper {
+  position: relative;
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_news .news_bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  opacity: 0.3;
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+}
+.main_news .news_content {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+  padding: clamp(32px, 2.5rem, 60px);
+  background-color: white;
+}
+.main_news .news_content .news_content_flex {
+  display: flex;
+  justify-content: space-between;
+}
+.main_news .news_content .news_content_flex img {
+  width: clamp(192px, 15rem, 360px);
+  height: clamp(144px, 11.25rem, 270px);
+  background-color: rgb(217, 217, 217);
+  border-radius: clamp(8px, 0.625rem, 15px);
+}
+.main_news .news_content .news_content_flex .news_content_text {
+  width: clamp(512px, 40rem, 960px);
+}
+.main_news .news_content .news_content_flex .news_content_text time {
+  font-family: "cannia", sans-serif;
+  font-weight: 400;
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  line-height: 1;
+  letter-spacing: clamp(0.448px, 0.035rem, 0.84px);
+  color: rgb(175, 175, 175);
+}
+.main_news .news_content .news_content_flex .news_content_text h4 {
+  font-family: "Noto Sans JP", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  line-height: 1;
+  letter-spacing: clamp(0.72px, 0.05625rem, 1.35px);
+  color: rgb(102, 102, 102);
+  margin: clamp(6.4px, 0.5rem, 12px) 0 0 0;
+}
+.main_news .news_content .news_content_flex .news_content_text p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-style: clamp(12.8px, 1rem, 24px);
+  line-height: 1.8;
+  letter-spacing: clamp(1.024px, 0.08rem, 1.92px);
+  color: rgb(68, 68, 68);
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+}
+.main_news .news_content .news_border {
+  width: 100%;
+  height: clamp(0.8px, 0.0625rem, 1.5px);
+  background-color: rgb(239, 218, 198);
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+}
+.main_news .news_content .news_content_flex:not(:nth-of-type(1)) {
+  margin: clamp(28.8px, 2.25rem, 54px) 0 0 0;
+}
+
+.main_contact .contact_content_wrapper {
+  padding: clamp(64px, 5rem, 120px) 0;
+  position: relative;
+}
+.main_contact .contact_bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 0.3;
+  z-index: -1;
+}
+.main_contact .contact_content {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+}
+.main_contact .contact_content > p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: rgb(102, 102, 102);
+}
+.main_contact .contact_content > p:not(:nth-of-type(1)) {
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.main_contact .contact_content form {
+  margin: clamp(32px, 2.5rem, 60px) 0 0 0;
+  padding: clamp(32px, 2.5rem, 60px) clamp(64px, 5rem, 120px);
+  background-color: white;
+}
+.main_contact .contact_content form .contact_border {
+  width: 100%;
+  height: clamp(0.8px, 0.0625rem, 1.5px);
+  background: rgb(247, 247, 247);
+  margin: clamp(19.2px, 1.5rem, 36px) 0;
+}
+.main_contact .contact_content form > div:not(.contact_border) {
+  display: flex;
+  justify-content: space-between;
+  width: clamp(374.4px, 29.25rem, 702px);
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.main_contact .contact_content form > div:not(.contact_border) label, .main_contact .contact_content form > div:not(.contact_border) button {
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  letter-spacing: 0;
+  color: rgb(102, 102, 102);
+  text-align: center;
+}
+.main_contact .contact_content form > div:not(.contact_border) input {
+  width: clamp(240px, 18.75rem, 450px);
+  padding: clamp(6.4px, 0.5rem, 12px) 0 clamp(6.4px, 0.5rem, 12px) clamp(19.2px, 1.5rem, 36px);
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(192, 157, 123);
+  border-radius: clamp(4px, 0.3125rem, 7.5px);
+  box-sizing: border-box;
+}
+.main_contact .contact_content form > div:not(.contact_border) input::-moz-placeholder {
+  font-size: clamp(12.8px, 1rem, 24px);
+  color: rgb(204, 204, 204);
+}
+.main_contact .contact_content form > div:not(.contact_border) input::placeholder {
+  font-size: clamp(12.8px, 1rem, 24px);
+  color: rgb(204, 204, 204);
+}
+.main_contact .contact_content form > div:not(.contact_border) .red {
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  color: rgb(255, 65, 64);
+}
+.main_contact .contact_content form > div:not(.contact_border) div:has(> .birth_option_flex) {
+  display: flex;
+  -moz-column-gap: clamp(6.4px, 0.5rem, 12px);
+       column-gap: clamp(6.4px, 0.5rem, 12px);
+}
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: clamp(6.4px, 0.5rem, 12px);
+       column-gap: clamp(6.4px, 0.5rem, 12px);
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  position: relative;
+}
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex::before, .main_contact .contact_content form > div:not(.contact_border) .birth_option_flex::after {
+  content: "";
+  display: block;
+  width: clamp(6px, 0.46875rem, 11.25px);
+  height: clamp(1.6px, 0.125rem, 3px);
+  position: absolute;
+  top: clamp(16px, 1.25rem, 30px);
+  background: rgb(102, 102, 102);
+}
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex::before {
+  right: clamp(43.2px, 3.375rem, 81px);
+  transform: rotate(45deg);
+}
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex::after {
+  right: clamp(40px, 3.125rem, 75px);
+  transform: rotate(-45deg);
+}
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex.click::before {
+  transform: rotate(-40deg);
+}
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex.click::after {
+  transform: rotate(40deg);
+}
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex:nth-of-type(1) select {
+  width: clamp(88px, 6.875rem, 165px);
+}
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex:nth-of-type(2) select,
+.main_contact .contact_content form > div:not(.contact_border) .birth_option_flex:nth-of-type(3) select {
+  width: clamp(70.4px, 5.5rem, 132px);
+}
+.main_contact .contact_content form > div:not(.contact_border) select {
+  font-size: clamp(12.8px, 1rem, 24px);
+  padding: clamp(6.4px, 0.5rem, 12px) clamp(24px, 1.875rem, 45px) clamp(6.4px, 0.5rem, 12px) clamp(19.2px, 1.5rem, 36px);
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(192, 157, 123);
+  border-radius: clamp(4px, 0.3125rem, 7.5px);
+  box-sizing: border-box;
+}
+.main_contact .contact_content form > div:not(.contact_border) input[type=radio] {
+  position: relative;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: clamp(16px, 1.25rem, 30px);
+  height: clamp(16px, 1.25rem, 30px);
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(173, 127, 82);
+  border-radius: 50%;
+  padding: 0;
+}
+.main_contact .contact_content form > div:not(.contact_border) input[type=radio]:checked::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: clamp(8px, 0.625rem, 15px);
+  height: clamp(8px, 0.625rem, 15px);
+  border-radius: 50%;
+  background-color: rgb(173, 127, 82);
+}
+.main_contact .contact_content form > div:not(.contact_border) > div:has(input[type=radio]) {
+  display: flex;
+  -moz-column-gap: clamp(12.8px, 1rem, 24px);
+       column-gap: clamp(12.8px, 1rem, 24px);
+  width: clamp(193.6px, 15.125rem, 363px);
+}
+.main_contact .contact_content form > div:not(.contact_border) > div:has(input[type=radio]) > div {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: clamp(6.4px, 0.5rem, 12px);
+       column-gap: clamp(6.4px, 0.5rem, 12px);
+}
+.main_contact .contact_content form > div:not(.contact_border) input[type=text]#datepicker,
+.main_contact .contact_content form > div:not(.contact_border) input[type=text]#datepicker2 {
+  cursor: pointer;
+}
+.main_contact .contact_content form > div:not(.contact_border) span:not(.red) {
+  font-size: clamp(11.2px, 0.875rem, 21px);
+}
+.main_contact .contact_content form > div:not(.contact_border) textarea {
+  width: clamp(537.6px, 42rem, 1008px);
+  height: clamp(192px, 15rem, 360px);
+  padding: clamp(14.4px, 1.125rem, 27px) clamp(19.2px, 1.5rem, 36px);
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(192, 157, 123);
+  border-radius: clamp(4px, 0.3125rem, 7.5px);
+}
+.main_contact .contact_content form div:not(.contact_border):has(> textarea) {
+  width: clamp(672px, 52.5rem, 1260px);
+}
+.main_contact .contact_content form > div:has(.birth_option_flex) {
+  width: clamp(438.4px, 34.25rem, 822px);
+}
+.main_contact .contact_content form > div:has(input[type=radio]) {
+  width: clamp(328px, 25.625rem, 615px);
+}
+.main_contact .contact_content > button {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.6;
+}
+.main_contact .contact_content > button img {
+  transform: rotate(0);
+}
+
+.main_thanks .thanks_content_wrapper {
+  position: relative;
+  padding: clamp(64px, 5rem, 120px) 0;
+}
+.main_thanks .thanks_bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  z-index: -1;
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+}
+.main_thanks .thanks_content {
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: 0 auto;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+}
+.main_thanks .thanks_content h3 {
+  font-weight: 600;
+  font-size: clamp(25.6px, 2rem, 48px);
+  line-height: 1.6;
+  letter-spacing: clamp(1.024px, 0.08rem, 1.92px);
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+.main_thanks .thanks_content p {
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.6;
+  letter-spacing: clamp(0.512px, 0.04rem, 0.96px);
+  color: rgb(102, 102, 102);
+  text-align: center;
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.main_thanks .thanks_content .content_brown_button {
+  display: block;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: clamp(51.2px, 4rem, 96px);
+  text-align: center;
+  letter-spacing: 0;
+  margin: clamp(64px, 5rem, 120px) auto 0;
+}
+
+.main_laser .laser_content_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: clamp(16px, 1.25rem, 30px) clamp(176px, 13.75rem, 330px);
+  box-shadow: 0 clamp(3.2px, 0.25rem, 6px) clamp(3.2px, 0.25rem, 6px) rgba(0, 0, 0, 0.1);
+  font-family: "YuMincho", "Noto Serif JP", serif;
+}
+.main_laser .laser_content_header h2 {
+  font-weight: 500;
+  font-size: clamp(38.4px, 3rem, 72px);
+  line-height: 1.5;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main_laser .laser_content_header h3 {
+  font-weight: 500;
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  line-height: 1.6;
+  color: rgb(102, 102, 102);
+}
+.main_laser .laser_content_header .laser_price_flex {
+  display: flex;
+  margin: clamp(12.8px, 1rem, 24px) 0 0 0;
+  align-items: center;
+  -moz-column-gap: clamp(7.2px, 0.5625rem, 13.5px);
+       column-gap: clamp(7.2px, 0.5625rem, 13.5px);
+  font-family: "YuMincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  line-height: 1.6;
+  color: rgb(102, 102, 102);
+}
+.main_laser .laser_content_header .laser_price_flex span {
+  display: inline-block;
+  font-size: clamp(28.8px, 2.25rem, 54px);
+  margin-right: clamp(4px, 0.3125rem, 7.5px);
+}
+.main_laser .laser_content_header .laser_price_flex p {
+  font-size: clamp(9.6px, 0.75rem, 18px);
+}
+.main_laser .laser_content_header .laser_header_bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background: rgb(255, 249, 245);
+}
+.main_laser .laser_content_header .laser_header_button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-size: clamp(9.6px, 0.75rem, 18px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: clamp(0.384px, 0.03rem, 0.72px);
+  background: white;
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(204, 204, 204);
+  border-radius: 9999px;
+  padding: clamp(3.2px, 0.25rem, 6px) clamp(6.4px, 0.5rem, 12px);
+}
+.main_laser .laser_content_header img:nth-of-type(1) {
+  width: clamp(95.2px, 7.4375rem, 178.5px);
+  position: absolute;
+  top: clamp(96px, 7.5rem, 180px);
+  left: clamp(90.4px, 7.0625rem, 169.5px);
+  z-index: -1;
+}
+.main_laser .laser_content_header img:nth-of-type(2) {
+  width: clamp(88.8px, 6.9375rem, 166.5px);
+  position: absolute;
+  bottom: 0;
+  left: clamp(152px, 11.875rem, 285px);
+  z-index: -1;
+}
+.main_laser .laser_content_header img:nth-of-type(3) {
+  width: clamp(336px, 26.25rem, 630px);
+  height: clamp(192px, 15rem, 360px);
+}
+.main_laser .laser_link_wrapper {
+  position: relative;
+  padding: clamp(64px, 5rem, 120px) clamp(176px, 13.75rem, 330px);
+}
+.main_laser .laser_link_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("../img/content_bg_origin.jpg") center/cover no-repeat;
+  opacity: 0.3;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+.main_laser .laser_link {
+  margin: 0;
+  width: clamp(800px, 62.5rem, 1500px);
+}
+.main_laser .laser_link a {
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  padding: 0;
+  letter-spacing: clamp(0.448px, 0.035rem, 0.84px);
+}
+.main_laser .laser_link a p {
+  width: clamp(148.8px, 11.625rem, 279px);
+  text-align: center;
+}
+.main_laser .laser_link a .price_arrow {
+  right: clamp(12.8px, 1rem, 24px);
+  left: auto;
+}
+.main_laser .laser_about {
+  width: clamp(975.2px, 76.1875rem, 1828.5px);
+  margin: clamp(68px, 5.3125rem, 127.5px) 0 0 0;
+  padding: clamp(64px, 5rem, 120px) 0 clamp(64px, 5rem, 120px) clamp(176px, 13.75rem, 330px);
+  position: relative;
+}
+.main_laser .laser_about_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: url("../img/laser_about_bg.png") center/cover no-repeat;
+  border-radius: 0 0 clamp(128px, 10rem, 240px) 0;
+}
+.main_laser .laser_about_bgc {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+  background: rgb(247, 247, 247);
+  border-radius: 0 0 clamp(128px, 10rem, 240px) 0;
+}
+.main_laser .laser_about_text {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(12.8px, 1rem, 24px);
+  width: clamp(732.8px, 57.25rem, 1374px);
+  margin: clamp(51.2px, 4rem, 96px) 0 0 0;
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.625;
+  color: rgb(102, 102, 102);
+}
+.main_laser .laser_effect {
+  width: 100%;
+  background-color: rgb(255, 249, 245);
+  margin: clamp(60px, 4.6875rem, 112.5px) 0 0 0;
+  padding: clamp(64px, 5rem, 120px) clamp(176px, 13.75rem, 330px);
+}
+.main_laser .laser_effect .laser_effect_flex {
+  width: clamp(800px, 62.5rem, 1500px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: clamp(51.2px, 4rem, 96px) 0 0 0;
+}
+.main_laser .laser_effect img {
+  display: block;
+  width: clamp(400px, 31.25rem, 750px);
+}
+.main_laser .laser_effect .laser_about_text {
+  width: clamp(336px, 26.25rem, 630px);
+  margin: 0;
+}
+.main_laser .laser_merit {
+  padding: clamp(64px, 5rem, 120px) clamp(176px, 13.75rem, 330px);
+}
+.main_laser .laser_merit .laser_merit_content {
+  display: flex;
+  -moz-column-gap: clamp(32px, 2.5rem, 60px);
+       column-gap: clamp(32px, 2.5rem, 60px);
+  margin: clamp(51.2px, 4rem, 96px) 0 0 0;
+}
+.main_laser .laser_merit .laser_merit_content .laser_merit_box {
+  width: clamp(384px, 30rem, 720px);
+  border-radius: clamp(8px, 0.625rem, 15px);
+  overflow: hidden;
+}
+.main_laser .laser_merit .laser_merit_content .laser_merit_box h4 {
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: clamp(19.2px, 1.5rem, 36px);
+  line-height: 1.6;
+  padding: clamp(10.4px, 0.8125rem, 19.5px) 0;
+  text-align: center;
+  color: white;
+}
+.main_laser .laser_merit .laser_merit_content .laser_merit_box .laser_merit_box_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: clamp(224px, 17.5rem, 420px);
+  row-gap: clamp(6.4px, 0.5rem, 12px);
+  padding: 0 clamp(32px, 2.5rem, 60px);
+}
+.main_laser .laser_merit .laser_merit_content .laser_merit_box p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.6;
+  color: rgb(102, 102, 102);
+}
+.main_laser .laser_merit .laser_merit_content .laser_merit_box:nth-of-type(1) {
+  border: clamp(0.4px, 0.03125rem, 0.75px) solid rgb(192, 157, 123);
+}
+.main_laser .laser_merit .laser_merit_content .laser_merit_box:nth-of-type(1) h4 {
+  background: rgb(192, 157, 123);
+}
+.main_laser .laser_merit .laser_merit_content .laser_merit_box:nth-of-type(2) {
+  border: clamp(0.4px, 0.03125rem, 0.75px) solid rgb(204, 204, 204);
+}
+.main_laser .laser_merit .laser_merit_content .laser_merit_box:nth-of-type(2) h4 {
+  background: rgb(204, 204, 204);
+}
+.main_laser .laser_robot {
+  padding: clamp(64px, 5rem, 120px) clamp(176px, 13.75rem, 330px);
+  background: rgb(247, 247, 247);
+}
+.main_laser .laser_robot .laser_robot_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: clamp(800px, 62.5rem, 1500px);
+  margin: clamp(51.2px, 4rem, 96px) 0 0 0;
+}
+.main_laser .laser_robot .laser_robot_flex img {
+  width: clamp(304px, 23.75rem, 570px);
+}
+.main_laser .laser_robot .laser_robot_flex .laser_robot_text {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(19.2px, 1.5rem, 36px);
+}
+.main_laser .laser_robot .laser_robot_flex .laser_robot_text h4 {
+  font-family: "cannia", sans-serif;
+  font-weight: 400;
+  font-size: clamp(28.8px, 2.25rem, 54px);
+  line-height: 1;
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.main_laser .laser_robot .laser_robot_flex .laser_robot_text .laser_robot_text_box {
+  display: flex;
+  flex-direction: column;
+  row-gap: clamp(12.8px, 1rem, 24px);
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.7;
+  color: rgb(102, 102, 102);
+}
+.main_laser .laser_price {
+  padding: clamp(64px, 5rem, 120px) clamp(176px, 13.75rem, 330px);
+}
+.main_laser .laser_price table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2.5rem 0 0 0;
+  line-height: 1;
+  vertical-align: middle;
+}
+.main_laser .laser_price table thead tr {
+  height: 2.5rem;
+  background: rgb(192, 157, 123);
+}
+.main_laser .laser_price table thead tr td {
+  width: 100%;
+}
+.main_laser .laser_price table tbody td {
+  width: 15.625rem;
+  height: 6.875rem;
+  border: rgb(204, 204, 204) 0.0625rem solid;
+  font-size: 0.875rem;
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+  font-weight: 500;
+  color: rgb(102, 102, 102);
+  text-align: center;
+  letter-spacing: 0.04375rem;
+}
+.main_laser .laser_price table tbody td span {
+  display: inline-block;
+  line-height: 1.2083333333;
+  font-size: 1.5rem;
+}
+.main_laser .content_brown_button {
+  border: clamp(0.8px, 0.0625rem, 1.5px) solid rgb(173, 127, 82);
+  background: white;
+  color: rgb(102, 102, 102);
+  font-family: "Noto Serif JP", "Yu Mincho", serif;
+}
+.main_laser .content_brown_button img {
+  transform: rotate(0);
+}
+.main_laser .doctor_content_wrapper {
+  margin: 0;
+}
+
+.laser_about_title {
+  display: flex;
+}
+.laser_about_title > div:nth-of-type(1) {
+  width: clamp(2.4px, 0.1875rem, 4.5px);
+  height: clamp(28.8px, 2.25rem, 54px);
+  background: linear-gradient(to bottom, rgb(183, 143, 54), rgb(202, 171, 102), rgb(152, 127, 71));
+}
+.laser_about_title h3 {
+  margin: 0 0 0 clamp(12.8px, 1rem, 24px);
+  font-family: "Noto Serif JP", "YuMincho", serif;
+  font-weight: 600;
+  font-size: clamp(28.8px, 2.25rem, 54px);
+  letter-spacing: clamp(4.608px, 0.36rem, 8.64px);
+  background: linear-gradient(to right, rgba(183, 143, 54, 0.8), rgba(202, 171, 102, 0.8) 45%, rgba(152, 127, 71, 0.8));
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+main > div:nth-of-type(1) > .photosilk_content_header:nth-of-type(1) img:nth-of-type(1) {
+  width: clamp(95.2px, 7.4375rem, 178.5px);
+  position: absolute;
+  top: clamp(77.6px, 6.0625rem, 145.5px);
+  left: clamp(90.4px, 7.0625rem, 169.5px);
+  z-index: -1;
+}
+main > div:nth-of-type(1) > .photosilk_content_header:nth-of-type(1) img:nth-of-type(2) {
+  width: clamp(88.8px, 6.9375rem, 166.5px);
+  position: absolute;
+  top: clamp(110px, 8.59375rem, 206.25px);
+  left: clamp(152px, 11.875rem, 285px);
+  z-index: -1;
+}
+
+.main_photosilk .photosilk_robot .laser_robot_flex .laser_robot_text h4 {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+}
+
+.main_hifu .laser_about_text p,
+.main_removal .laser_about_text p {
+  letter-spacing: clamp(2.048px, 0.16rem, 3.84px);
+}
+
+.main_removal .removal_content_header {
+  align-items: flex-start;
+}
+.main_removal .removal_content_header h2 {
+  margin: clamp(29.6px, 2.3125rem, 55.5px) 0 0 0;
+  line-height: 1.5;
+}
+.main_removal .removal_merit .removal_merit_content .removal_merit_box .removal_merit_text_flex {
+  display: flex;
+  padding: clamp(32px, 2.5rem, 60px);
+  height: clamp(305.6px, 23.875rem, 573px);
+}
+.main_removal .removal_price_content > p {
+  font-family: "YuMincho", "Noto Serif JP", serif;
+  font-weight: 500;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.6;
+  letter-spacing: clamp(0.512px, 0.04rem, 0.96px);
+  color: rgb(102, 102, 102);
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+.main_removal .removal_price_content table:nth-of-type(2) {
+  margin: clamp(19.2px, 1.5rem, 36px) 0 0 0;
+}
+
+.main_botox .botox_merit_content .botox_merit_box .botox_merit_box_text p {
+  letter-spacing: clamp(2.048px, 0.16rem, 3.84px);
+}
+.main_botox .botox_about_text {
+  letter-spacing: clamp(2.048px, 0.16rem, 3.84px);
+}
+.main_botox .botox_robot .botox_robot_flex_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.main_botox .botox_robot .botox_robot_flex {
+  width: clamp(240px, 18.75rem, 450px);
+  flex-direction: column;
+  justify-content: normal;
+  align-items: normal;
+  row-gap: clamp(12.8px, 1rem, 24px);
+}
+.main_botox .botox_robot .botox_robot_flex img {
+  width: clamp(240px, 18.75rem, 450px);
+}
+.main_botox .botox_robot .botox_robot_flex .botox_flex_title {
+  text-align: center;
+}
+.main_botox .botox_robot .botox_robot_flex .botox_flex_title p {
+  font-family: "Zen Old Mincho", "Noto Serif JP", serif;
+  font-size: clamp(12.8px, 1rem, 24px);
+  font-weight: 500;
+  color: rgb(173, 127, 82);
+  line-height: 2.1875;
+}
+.main_botox .botox_robot .botox_robot_flex .botox_flex_title h4 {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: clamp(16px, 1.25rem, 30px);
+  line-height: 1.75;
+  color: rgb(173, 127, 82);
+}
+.main_botox .botox_robot .botox_robot_flex p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(14.4px, 1.125rem, 27px);
+  line-height: 1.7;
+  color: rgb(102, 102, 102);
+}
+.main_botox .botox_robot .botox_robot_flex p span {
+  display: block;
+  font-family: "Zen Old Mincho", "Noto Serif JP", serif;
+  font-size: clamp(16px, 1.25rem, 30px);
+  font-weight: 700;
+  line-height: 1.7;
+}
+.main_botox .botox_robot .botox_robot_flex:nth-of-type(2) .botox_flex_title p {
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  line-height: 2.5;
+}
+
+.main_peeling .peeling_about_text {
+  letter-spacing: clamp(2.048px, 0.16rem, 3.84px);
+  line-height: 1.6;
+}
+.main_peeling .peeling_merit .laser_merit_content .laser_merit_box .laser_merit_box_text {
+  height: clamp(333.6px, 26.0625rem, 625.5px);
+}
+.main_peeling .peeling_merit .laser_merit_content .laser_merit_box .laser_merit_box_text p {
+  letter-spacing: clamp(2.048px, 0.16rem, 3.84px);
+  line-height: 1.625;
+}
+
+.main_kabelline > div:nth-of-type(1) > .kabelline_content_header:nth-of-type(1) img:nth-of-type(1) {
+  width: clamp(96px, 7.5rem, 180px);
+  top: clamp(85.6px, 6.6875rem, 160.5px);
+  left: clamp(66.4px, 5.1875rem, 124.5px);
+}
+.main_kabelline > div:nth-of-type(1) > .kabelline_content_header:nth-of-type(1) img:nth-of-type(2) {
+  width: clamp(80px, 6.25rem, 150px);
+  top: clamp(133.6px, 10.4375rem, 250.5px);
+  left: clamp(104.8px, 8.1875rem, 196.5px);
+}
+.main_kabelline > div:nth-of-type(1) .kabelline_about .laser_about_text p {
+  font-size: clamp(12.8px, 1rem, 24px);
+  letter-spacing: clamp(2.048px, 0.16rem, 3.84px);
+  line-height: 1.6;
+}
+.main_kabelline > div:nth-of-type(1) .kabelline_merit .kabelline_merit_content .kabelline_merit_box .kabelline_merit_box_text p {
+  font-size: clamp(12.8px, 1rem, 24px);
+  letter-spacing: clamp(2.048px, 0.16rem, 3.84px);
+  line-height: 1.6;
+}
+.main_kabelline > div:nth-of-type(1) .kabelline_merit .kabelline_merit_content .kabelline_merit_box .laser_merit_box_text {
+  height: clamp(284.8px, 22.25rem, 534px);
+}
+.main_kabelline .botox_robot .botox_robot_flex_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.main_kabelline .botox_robot .botox_robot_flex {
+  width: clamp(384px, 30rem, 720px);
+  flex-direction: column;
+  justify-content: normal;
+  align-items: center;
+  row-gap: clamp(12.8px, 1rem, 24px);
+}
+.main_kabelline .botox_robot .botox_robot_flex img {
+  width: clamp(240px, 18.75rem, 450px);
+}
+.main_kabelline .botox_robot .botox_robot_flex .botox_flex_title {
+  text-align: center;
+}
+.main_kabelline .botox_robot .botox_robot_flex .botox_flex_title h4 {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: clamp(16px, 1.25rem, 30px);
+  line-height: 1.75;
+  color: rgb(173, 127, 82);
+}
+.main_kabelline .botox_robot .botox_robot_flex p {
+  font-family: "Yu Mincho", "Noto Serif JP", serif;
+  font-size: clamp(12.8px, 1rem, 24px);
+  line-height: 1.7;
+  letter-spacing: 0;
+  color: rgb(102, 102, 102);
+}
+.main_kabelline .botox_robot .botox_robot_flex:nth-of-type(2) .botox_flex_title p {
+  font-size: clamp(11.2px, 0.875rem, 21px);
+  line-height: 2.5;
 }
 /*# sourceMappingURL=style.css.map */
