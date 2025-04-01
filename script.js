@@ -13,6 +13,7 @@
 }
 
 {
+
   $('.recommend_slide').slick({
     autoplay: false,
     arrows: true,
@@ -33,10 +34,10 @@
     variableWidth: true,
     pauseOnHover: false,
     pauseOnFocus: false,
-    slidesToShow: 5,
     prevArrow: '<div class="gallery_prev"></div>',
     nextArrow: '<div class="gallery_next"></div>',
     centerMode: true,
+    initialSlide: 2,
     slidesToShow: 1,
     dots: true,
   });
@@ -132,5 +133,34 @@
         );
       });
     }
+  });
+}
+
+
+// SPハンバーガーメニュー
+
+{
+  $('.header_toggle').click(function() {
+    $(this).toggleClass('open');
+    $(this).closest('header').find('.header_content_menu').toggleClass('open');
+  });
+}
+
+{
+  let resizeTimer;
+
+  $(window).resize(function() {
+      clearTimeout(resizeTimer); // 既存のタイマーをクリア
+      resizeTimer = setTimeout(function() {
+        $('.header_content_menu').css(
+          'transition', 'none'
+        );
+
+        setTimeout(function() {
+          $('.header_content_menu').css(
+            'transition', ''
+          );
+        }, 1000)
+      }, 200); // 200ms 待って最後の変更だけ実行
   });
 }

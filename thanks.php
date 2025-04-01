@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>レディアス美容クリニック福岡天神院 price</title>
+  <title>レディアス美容クリニック福岡天神院</title>
   <link rel="stylesheet" href="css/ress.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,56 +20,127 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
-<?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+  <?php
 
-// PHPMailer を読み込む
-require 'vendor/autoload.php'; // Composerを使う場合
+  use PHPMailer\PHPMailer\PHPMailer;
+  use PHPMailer\PHPMailer\Exception;
 
-if ($_POST) {
-    $mail = new PHPMailer(true);
+  require 'vendor/autoload.php';
 
-    try {
-        // SMTP 設定
-        $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';  // GmailのSMTPサーバー
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'tarchin6061@gmail.com'; // あなたのGmailアドレス
-        $mail->Password   = 'korosuke2019';   // Googleアカウントのアプリパスワード
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+  $mail = new PHPMailer(true);
+  $mail ->CharSet   = 'UTF-8';
 
-        // 送信元・送信先
-        $mail->setFrom('tarchin6061@gmail.com', 'ターチン');
-        $mail->addAddress('tarchin6061@gmail.com'); // 送信先
+  try {
+      // SMTP設定
+      $mail->isSMTP();
+      $mail->Host       = 'smtp.gmail.com'; // SMTPサーバー
+      $mail->SMTPAuth   = true;
+      $mail->Username   = 'tarchin6061@gmail.com'; // Gmailアカウント
+      $mail->Password   = 'plny glri qsuh wagb'; // アプリパスワード
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port       = 587;
 
-        // メールの件名
-        $mail->Subject = 'お問い合わせがありました';
+      // 送信者情報
+      $mail->setFrom($_POST["email"], $_POST["name"]);
+      $mail->addAddress('aokusa6061@gmail.com', 'Recipient Name');
 
-        // メール本文（フォームのデータを含める）
-        $message = "お問い合わせがありました。\n\n";
-        $message .= "お名前：" . $_POST["name"] . "\n";
-        $message .= "フリガナ：" . $_POST["spell"] . "\n";
-        $message .= "電話番号：" . $_POST["tel"] . "\n";
-        $message .= "メールアドレス：" . $_POST["email"] . "\n";
-        $message .= "生年月日：" . $_POST["birth-year"] . "年" . $_POST["birth-month"] . "月" . $_POST["birth-day"] . "日\n";
-        $message .= "性別：" . $_POST["sex"] . "\n";
-        $message .= "ご希望日（第一希望）：" . $_POST["date1"] . "\n";
-        $message .= "ご希望日（第二希望）：" . $_POST["date2"] . "\n";
-        $message .= "お問い合わせ内容：\n" . $_POST["message"] . "\n";
+      // メール内容
+      // $mail->isHTML(true);
+      $mail->Subject = 'お問い合わせがありました';
+      $mail->Body = "お問い合わせがありました。\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "入力された内容は以下の通りです。\n";
+      $mail->Body .= "---\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "お名前：";
+      $mail->Body .= $_POST["name"]; // name属性がnameの内容が入ります
+      $mail->Body .= "\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "フリガナ:";
+      $mail->Body .= $_POST["spell"]; // name属性がemailの内容が入ります
+      $mail->Body .= "\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "電話番号:\n";
+      $mail->Body .= $_POST["tel"]; // name属性がemailの内容が入ります
+      $mail->Body .= "\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "メールアドレス:\n";
+      $mail->Body .= $_POST["email"]; // name属性がemailの内容が入ります
+      $mail->Body .= "\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "生年月日:";
+      $mail->Body .= $_POST["birth-year"]."年".$_POST["birth-month"]."月".$_POST["birth-day"]."日"; // name属性がemailの内容が入ります
+      $mail->Body .= "\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "性別:";
+      $mail->Body .= $_POST["sex"]; // name属性がemailの内容が入ります
+      $mail->Body .= "\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "第一希望日:";
+      $mail->Body .= $_POST["date1"]; // name属性がemailの内容が入ります
+      $mail->Body .= "\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "第二希望日:";
+      $mail->Body .= $_POST["date2"]; // name属性がemailの内容が入ります
+      $mail->Body .= "\n";
+      $mail->Body .= "\n";
+      $mail->Body .= "ご相談内容:\n";
+      $mail->Body .= $_POST["message"]; 
 
-        $mail->Body = $message;
+      // メール送信
+      $mail->send();
 
-        // メール送信
-        $mail->send();
-        echo 'メールが送信されました。';
     } catch (Exception $e) {
-        echo "メール送信に失敗しました: {$mail->ErrorInfo}";
+        echo "メール送信に失敗: {$mail->ErrorInfo}";
     }
-}
-?>
 
+  ?>
+
+
+    <!-- mb_language("Japanese");
+    mb_internal_encoding("UTF-8");
+
+    $to = "tarchin6061@gmail.com";
+    $subject = "お問い合わせがありました";
+
+    $message = "お問い合わせがありました。\n";
+    $message .= "\n";
+    $message .= "入力された内容は以下の通りです。\n";
+    $message .= "---\n";
+    $message .= "\n";
+    $message .= "お名前：\n";
+    $message .= $_POST["name"]; // name属性がnameの内容が入ります
+    $message .= "\n";
+    $message .= "フリガナ:\n";
+    $message .= $_POST["spell"]; // name属性がemailの内容が入ります
+    $message .= "\n";
+    $message .= "電話番号:\n";
+    $message .= $_POST["tel"]; // name属性がemailの内容が入ります
+    $message .= "\n";
+    $message .= "メールアドレス:\n";
+    $message .= $_POST["email"]; // name属性がemailの内容が入ります
+    $message .= "\n";
+    $message .= "生年月日:\n";
+    $message .= $_POST["birth-year"]."年".$_POST["birth_month"]."月".$_POST["birth_day"]."日"; // name属性がemailの内容が入ります
+    $message .= "\n";
+    $message .= "性別:\n";
+    $message .= $_POST["sex"]; // name属性がemailの内容が入ります
+    $message .= "\n";
+    $message .= "第一希望日:";
+    $message .= $_POST["date1"]; // name属性がemailの内容が入ります
+    $message .= "\n";
+    $message .= "第二希望日:";
+    $message .= $_POST["date2"]; // name属性がemailの内容が入ります
+    $message .= "\n";
+    $message .= "ご相談内容:\n";
+    $message .= $_POST["message"]; 
+
+    $headers = "From:".$_POST["email"];
+
+
+    mb_send_mail($to, $subject, $message, $headers);
+
+  ?>plny glri qsuh wagb -->
   <header>
     <div class="header_information">
       <div class="header_information_phone">
@@ -77,22 +148,34 @@ if ($_POST) {
         <p>092-791-5973</p>  
       </div>
       <p>診療時間　9:00〜18:00 不定休</p>  
+      <p class="res_sp">レディアス美容クリニック福岡天神院</p>
     </div>
     <div class="header_content">
-      <div class="header_logo">
-        <img src="img/logo.png" loading="lazy" alt="ロゴ画像">
-        <h1>レディアス美容クリニック<br>福岡天神院</h1>
+      <div class="header_toggle res_sp">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
+      <a href="">
+        <div class="header_logo">
+          <img src="img/logo.png" loading="lazy" alt="ロゴ画像">
+          <h1>KOBE皮膚科福岡天神院</h1>
+        </div>  
+      </a>
       <div class="header_content_menu">
         <div class="header_menu_link">
-          <a href="" class="line_link">
+          <a href="https://line.me/R/ti/p/@609fsprl?ts=03301632&oat_content=url" class="line_link"  target="_blank">
             <img src="img/line-icon.png" loading="lazy" alt="lineアイコン">
             LINE予約
           </a>
-          <a href="" class="contact_link">
+          <a href="contact.html" class="contact_link"  target="_blank">
             <img src="img/web-icon.png" loading="lazy" alt="WEBサイトアイコン">
             お問い合わせ
           </a>
+          <div class="res_sp">
+            <p>営業時間</p>
+            <p>9:00〜18:00</p>
+          </div>
         </div>
         <ul>
           <li><a href="index.html">HOME</a></li>
@@ -100,11 +183,11 @@ if ($_POST) {
           <li><a href="treatment.html">施術一覧</a></li>
           <li><a href="case.html">症例一覧</a></li>
           <li><a href="about_clinic.html">当院について</a></li>
-          <li><a href="">各クリニック案内</a></li>
-          <li><a href="">施術の流れ</a></li>
-          <li><a href="">よくある質問</a></li>
-          <li><a href="">アフターケア</a></li>
-          <li><a href="">ドクター紹介</a></li>
+          <li><a href="about_clinic.html">各クリニック案内</a></li>
+          <li><a href="flow.html">施術の流れ</a></li>
+          <li><a href="faq.html">よくある質問</a></li>
+          <li><a href="aftercare.html">アフターケア</a></li>
+          <li><a href="doctor.html">ドクター紹介</a></li>
         </ul>
       </div>
     </div>
