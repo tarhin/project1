@@ -13,6 +13,24 @@
 }
 
 {
+  $('.main_price .price_header_wrapper .price_link > a').each(function() {
+    var targetId = $(this).data('target'); // data-target属性を取得
+    var targetElement = $('#' + targetId);
+
+    if (targetElement.length) {
+      var position = targetElement.offset().top;
+
+      $(this).click(function() {
+        $("html, body").animate(
+          { scrollTop: position },
+          { duration: 600, queue: false }
+        );
+      });
+    }
+  });
+}
+
+{
 
   $('.recommend_slide').slick({
     autoplay: false,
